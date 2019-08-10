@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> display:table、table-xx </title>
+	<style type="text/css">
+		div>div {
+			display: table-row;
+			padding: 10px;
+		}
+		div>div>div{
+			display: table-cell;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+<div style="display:table;width:400px;">
+	<div style="display:table-caption;">用div来显示表格</div>
+	<div>
+		<div>0100JAVA培训</div>
+		<div>0100JAVA基础班</div>
+	</div>
+	<div>
+		<div>0100JAVA就业班</div>
+		<div>0100JAVA大数据班</div>
+	</div>
+</div>
+</body>
+</html>

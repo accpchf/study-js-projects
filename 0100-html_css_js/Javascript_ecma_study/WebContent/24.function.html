@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>函数</title>
+</head>
+
+<script type="text/javascript">
+//fun1(true);//语法错误，在不同<script>标签里，函数必须先定义
+</script>
+
+<script type="text/javascript">
+	var myname;
+	fun1(myname);//在一个<script>标签里可以先调用函数，再定义
+	myname=null;
+	fun1(myname);
+	function fun1(myname){
+		if(myname === null ){
+			console.log("名字是null，请重新输入");
+		}else if( myname === undefined){
+			console.log("名字是undefined，请重新输入");
+		}else if(typeof myname === 'boolean'){
+			console.log("名字是布尔型，请重新输入");
+		}else if(typeof myname === 'number'){
+			console.log("名字是数字，请重新输入");
+		}else if(typeof myname === 'object'){
+			console.log("名字是对象型，请重新输入");
+		}else if(typeof myname === 'string'){
+			console.log("输入正确，名字是"+myname);
+		}
+	}
+	
+	fun1("java");
+	
+</script>
+
+<script type="text/javascript">
+fun1(123);//在不同<script>标签里，可以调用已经定义的函数
+</script>
+
+<script type="text/javascript">
+//f1("javascript");//语法错误，因为变量f1还没有把函数作为值，赋给f1，所以当然错误
+//这是匿名函数
+var f1=function(myname){
+	if(myname === null ){
+		console.log("名字是null，请重新输入");
+	}else if( myname === undefined){
+		console.log("名字是undefined，请重新输入");
+	}else if(typeof myname === 'boolean'){
+		console.log("名字是布尔型，请重新输入");
+	}else if(typeof myname === 'number'){
+		console.log("名字是数字，请重新输入");
+	}else if(typeof myname === 'object'){
+		console.log("名字是对象型，请重新输入");
+	}else if(typeof myname === 'string'){
+		console.log("输入正确，名字是"+myname);
+	}
+}
+
+f1("c++");
+</script>
+<script type="text/javascript">
+f1("c语言");//在不同<script>标签里，可以调用已经定义的函数
+</script>
+<script type="text/javascript">
+var f2=new Function('name','age',
+		"console.log('名字是'+name);"+
+		"console.log('姓名是'+age);");
+f2("小王",21);
+</script>
+<script type="text/javascript">
+f2("小李",22);//在不同<script>标签里，可以调用已经定义的函数
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>contentEditable属性</title>
+</head>
+<body>
+	<!-- 直接指定contentEditable="true"表明该元素是可编辑的 -->
+	<div contentEditable="true" style="width: 500px; border: 1px solid black">
+		可编辑的表格
+		<!-- 该元素的父元素有contentEditable="true"，因此该表格也是可编辑的 -->
+		<table style="width: 420px; border-collapse: collapse" border="1">
+			<tr>
+				<td>琅琊榜</td>
+				<td>胡歌</td>
+			</tr>
+			<tr>
+				<td>伪装者</td>
+				<td>胡歌</td>
+			</tr>
+		</table>
+	</div>
+	<hr />
+	双击后，可以编辑:<br/>
+	<!-- 这个表格默认是不可编辑的双击之后该表格变为可编辑状态，一旦刷新，又恢复原样了 -->
+	<table id="target" ondblclick="this.contentEditable=true;"
+		style="width: 420px; border-collapse: collapse" border="1">
+		<tr>
+			<td>Java</td>
+			<td>Ruby</td>
+		</tr>
+		<tr>
+			<td>C/C++</td>
+			<td>Python</td>
+		</tr>
+	</table>
+</body>
+</html>

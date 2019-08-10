@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>数组操作方法</title>
+</head>
+<script type="text/javascript">
+var array=[1,"aa","bb"];
+console.log(array);
+var array2=array.concat("33",["11",55],{},[]);
+console.log(array);//array不受影响
+console.log(array2);
+var array3=array2.slice(1);
+var array4=array2.slice(1,4);
+console.log("slice()方法截取数组为新数组， slice(1)");
+console.log(array3);
+console.log("slice(1,4)");
+console.log(array4);
+
+//splice()方法简单理解为删除后插入,第1个参数表示开始位置，第2个参数表示删除几项，第3项开始的参数表示插入的项
+console.log("-----------splice()方法");
+var colors = ["red", "green", "blue","black"];
+console.log(colors);    
+var removed = colors.splice(0,2);    //从索引0开始，删除2位
+console.log("splice(0,2)");
+console.log(colors);     
+console.log("removed:"+removed);   
+
+removed = colors.splice(1, 0, "yellow", "orange"); //从位置1开始插入,参数0表示
+console.log("splice(1, 0, \"yellow\", \"orange\")");
+console.log(colors);     
+console.log("removed:"+removed);    
+
+removed = colors.splice(1, 1, "red", "purple");    
+console.log("colors.splice(1, 1, \"red\", \"purple\")");
+console.log(colors);     //green,red,purple,orange,blue
+console.log("removed:"+removed);    //yellow - one item array
+
+
+
+
+
+
+
+
+</script>
+</html>

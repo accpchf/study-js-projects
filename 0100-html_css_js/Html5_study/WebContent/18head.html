@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- 定义基准链接 -->
+	<title> base元素 </title>
+	<base target="_blank" href="http://www.ks0100.com" />
+	<!-- 以下name指定的关键字，容易被搜索引擎收录 -->
+	<meta name="作者" content="陈老师">
+	<meta name="网站" content="http://www.ks0100.com">
+	<meta name="网站关键字" content="java培训，java技术">
+	
+	<!--网页到2016年4月2日星期六13:01:02过期，浏览器会从本地缓存找网页，过期后才会去服务器取，但是可以强制刷新，或者删除本地缓存  -->
+	
+	 <meta http-equiv="Expires" content="Sat Apr 02 13:01:02 CST 2016"> 
+	<!--Pragma：指定禁止浏览器从缓存中调阅页面  -->
+	<!-- <meta http-equiv="Pragma" content="no-cache">  -->
+	
+	
+	<!-- 2秒后自动刷新本页面 -->
+	<!-- <meta http-equiv="Refresh" content="2" > -->
+	<!-- 过2秒后转到http://www.ks0100.com -->
+	<!--  <meta http-equiv="Refresh" content="2;URL=http://www.ks0100.com" >  -->
+	<!--Cookie以后会专门学，这里设置Cookie过期时间  -->
+	<meta http-equiv="Set-Cookie" content="name=value expire=Sat Apr 02 13:01:02 CST 2016">
+	<!-- 设置页面内容类型和字符集，将来做下载文件的时候就会感受到 -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	
+</head>
+<body>
+	<!-- href会自动加上http://www.ks0100.com  -->
+	<a href="col.jsp?id=115">0100java培训班</a>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>异步加载js</title>
+<script type="text/javascript" async="async" src="http://code.jquery.com/jquery-2.1.4.js"></script> 
+<script type="text/javascript" async="async" src="js/example1.js"></script>
+<script type="text/javascript" async="async" src="js/example2.js"></script>
+</head>
+<body>
+<div>
+	<script type="text/javascript">
+	var dateObj=new Date();
+	document.write("当前时间:"+dateObj.getHours()+":"+dateObj.getMinutes()+":"+dateObj.getSeconds()+"<br/>");
+	</script>
+	这里是网页内容，加了defer属性，jquery-2.1.4.js、example1.js和example2.js都延迟加载执行
+</div>
+</body>
+<script type="text/javascript" src="js/example3.js"></script>
+<script type="text/javascript" src="js/example4.js"></script>
+</html>

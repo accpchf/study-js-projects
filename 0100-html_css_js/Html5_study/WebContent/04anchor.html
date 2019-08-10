@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title> 超链接 </title>
+</head>
+<body>
+<!-- 定义一个锚点,html5不支持，但是 -->
+<a id="test"></a>
+<!-- 在本窗口打开另一个资源 -->
+1.在本窗口打开另一个资源：<br/>
+<a href="http://www.ks0100.com"><b>0100java培训班</b></a><br />
+
+<!-- 在新窗口中打开另一个资源,用 target="_blank"-->
+2.在新窗口中打开另一个资源：<br/>
+<a href="http://www.ks0100.com"
+	target="_blank"><em>0100java培训班</em></a><br />
+3.为图像增加超链接：<br/>	
+
+<!-- 为图像增加超链接 -->
+图一.<a href="http://www.ks0100.com"><img src="image/logo.jpg" alt="0100培训班"/></a><br />
+图二.<a href="http://www.ks0100.com"><img src="./image/logo.jpg" alt="0100培训班"/></a><br />
+图三.<a href="http://www.ks0100.com"><img src="/image/logo.jpg" alt="0100培训班"/></a><br />
+4.直接打开本地html：<br/>		
+<!-- 基于相对路径指定另一个资源 -->
+<a href="02text.html">打开文本格式化标签</a><br />
+
+<!-- 如果本地安装outlook客户端，会自动打开outlook客户端 -->
+5.发送邮件:<br/>
+<a href="mailto:xxx@qq.com">写信给我</a><br/>
+
+<!-- 定义一个锚点 #后面跟锚点,html5之前用name，html5用id -->
+6.定义一个锚点：
+
+<a href="04anchor.html#test">跳回到锚点</a>
+
+7.打开一首歌：<br/>
+<a href="./media/我的天空.mp3">收听</a><br/>
+</body>
+</html>

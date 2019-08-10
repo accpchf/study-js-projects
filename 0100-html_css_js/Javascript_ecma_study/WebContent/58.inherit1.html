@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript继承-原型链</title>
+</head>
+<script type="text/javascript">
+function Animal(){
+	this.type="动物";
+}
+//用简洁方式定义原型
+Animal.prototype={
+	constructor: Animal, //省略Object.defineProperty 来设置constructor
+	showType:function(){
+		console.log("种类是:"+this.type);
+	},
+	show:function(){
+		console.log("父类方法");
+	}
+}
+
+function Cat(name,color){
+	this.name=name;
+	this.color=color;
+}
+//实现继承
+Cat.prototype=new Animal();//子类的原型对象指向父类的实例，实例化一遍占内存
+//Cat.prototype=Animal.prototype;//子类的原型对象指向父类原型对象，不用实例化，但是这样就影响父类原型对象了
+
+//Cat的原型对象不能用简洁方式了，因为会重新指向原型对象
+Cat.prototype.constructor=Cat;//上面的代码，让constructor指向Animal是不对的，所以这里指向Cat
+Cat.prototype.getName=function(){
+	return this.name;
+}
+Cat.prototype.show=function(){
+	console.log("它是一个"+this.type);//在子类可以继承父类的属性
+	console.log("名字:"+this.name+";颜色:"+this.color);
+}
+
+var cat=new Cat("波斯猫","白色");
+cat.show();//可以覆盖父类方法
+cat.showType();//子类对象可以继承父类的方法了
+console.log(cat.type);//子类对象可以继承父类的属性
+console.log("Object.prototype.isPrototypeOf(cat):"+Object.prototype.isPrototypeOf(cat));
+console.log("Animal.prototype.isPrototypeOf(cat):"+Animal.prototype.isPrototypeOf(cat));
+console.log("Cat.prototype.isPrototypeOf(cat):"+Cat.prototype.isPrototypeOf(cat));
+
+//如果用Cat.prototype=Animal.prototype;则Animal.prototype.constructor变成了Cat，因为引用同一个原型对象了
+console.log("Animal.prototype.constructor:"+Animal.prototype.constructor);
+//缺点，不能向父类构造函数传参数
+</script>
+</html>

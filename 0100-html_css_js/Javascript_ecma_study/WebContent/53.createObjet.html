@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>创建类</title>
+</head>
+<script type="text/javascript">
+	console.log("------用工厂模式来创建类");
+	function Person(name, age) { //这只是一个函数，用createPerson 命名更好理解
+		var o = new Object();
+		o.name = name;
+		o.age = age;
+		o.say = function() {
+			console.log("名字:" + o.name + ";年龄:" + o.age);
+		}
+		return o;
+	}
+	
+	var person1 = Person("小李", 32);//一个的函数调用，生成对象
+	person1.say();
+	console.log("person1 instanceof Object:" + (person1 instanceof Object));
+	console.log("person1 instanceof Person:" + (person1 instanceof Person));//false ，说明不能用工厂模式来对象属于某种类型
+	
+	
+	//简洁的工厂模式
+	function Person2(name, age) {
+		return { //直接返回引用类型字面量
+			name : name,
+			age : age,
+			say : function() {
+				console.log("名字:" + this.name + ";年龄:" + this.age);
+			}
+		};
+	}
+	console.log("------简洁的工厂模式");
+	person1 = Person2("小张", 30);
+	person1.say();
+	
+	console.log("------用工厂模式来创建稳妥对象");
+	//用工厂模式来创建稳妥对象，稳妥对象的属性是只读的，不能改变的，原因是不用this
+	function Person_wt(name, age) {
+		var o = new Object();
+		o.name = name;//调用函数后，name属性不能再改变
+		o.age = age;//调用函数后，age属性不能再改变
+		o.say = function() {
+			console.log("名字:" + name + ";年龄:" + age);
+		}
+		return o;
+	}
+	var person_wt=Person_wt("张稳妥",20);
+	person_wt.say();
+	console.log("修改前面不稳妥对象 person1 的 name=王二");
+	person1.name = "王二";
+	person1.say();
+	console.log("修改稳妥对象 person_wt的name=王二");
+	person_wt.name = "王二";//稳妥对象是不能改变其属性的
+	person_wt.say();
+	
+	console.log("简洁的 稳妥对象模式");
+	//简洁的 稳妥对象模式
+	function Person2_wt(name, age) {
+		return { //直接返回引用类型字面量
+			name : name,
+			age : age,
+			say : function() {
+				console.log("名字:" + name + ";年龄:" + age);
+			}
+		};
+	}
+	
+	console.log("**总结:采用工厂模式，只不过在调用函数，不能判断对象属于某种类型!!");
+	
+</script>
+<script type="text/javascript">
+	console.log("------用构造函数来创建类");
+	function Person_gz(name, age) {//按照惯例，构造函数要用大写字母开头，如同类一样
+		this.name = name;
+		this.age = age;
+		this.say = function() {
+			console.log("名字:" + this.name + ";年龄:" + this.age);
+		};
+	}
+	//新建一个对象
+	var person1_gz = new Person_gz("小李", 32);// 使用new来创造对象
+	person1_gz.say();
+	console.log("person1_gz instanceof Person_gz:" + (person1_gz instanceof Person_gz));//可以判断对象属于某种类型了
+	//再建一个对象
+	var person2_gz = new Person_gz("小王", 18);
+	person2_gz.say();
+	console.log("person2_gz instanceof Person_gz:" + (person2_gz instanceof Person_gz));
+	
+	console.log("----学习一下Object的constructor属性");
+	//constructor属性 指向创建当前对象的函数
+	console.log("person1_gz.constructor:" + person1_gz.constructor);
+	console.log("person1.constructor:" + person1.constructor);//person1是之前由工厂模式创建的对象
+	console.log("person2_gz.constructor===Person_gz:"+ (person2_gz.constructor === Person_gz));//可以用constructor属性，来判断对象类型
+	
+	console.log("------把构造函数作为一般函数来调用");
+	var person3 = Person_gz("小张", 28);//Person_gz 函数内的变量和方法都是指向全局对象,在浏览器里面全局对象就是window
+	//person3.say();//undefined
+	window.say();//同 this.say();say(); 
+	
+	console.log("------在另一个对象的作用域中调用，利用函数的call()对象的方法来改变this的作用域");
+	var person4 = new Object();
+	Person_gz.call(person4, "小刘", 38);//利用函数的call()对象的方法来改变this的作用域
+	person4.say();
+	//不像java，方法所占的内存是在属于类的方法区里面，只实例化一次。
+	
+	console.log("**总结构造函数，虽然可以让对象属于某种类型,但是每次用new 来生成对象，都要把对象中的方法在内存中实例化一遍，占用内存。如果多次调用，浏览器内存会泄漏");
+	console.log("person1_gz.say===person2_gz.say:" + (person1_gz.say === person2_gz.say));//false ，说明每次都把方法对应的函数对象实例化一遍
+	
+
+	console.log("构造函数内的对象方法和全局函数做绑定，实现方法实例化一次,这样的坏处，就是作为全局函数使用了,没有封装");
+	function Person4(name, age) {//按照惯例，构造函数要用大写字母开头，如同类一样
+		this.name = name;
+		this.age = age;
+		this.say = say_person;//对象方法和全局函数做绑定
+	}
+	function say_person() { //这样的坏处，就是作为全局函数使用了
+		console.log("名字:" + this.name + ";年龄:" + this.age);
+	}
+	var person1 = new Person4("小李", 32);// 使用new来创造对象
+	var person2 = new Person4("小王", 18);
+	console.log("person2.say===person1.say:" + (person2.say == person1.say));//true,说明方法每次都指向同一块区域
+	console.log("遗留问题，怎样创建一个类型，同时解决封装问题和方法实例化一次的问题？之后学习prototype属性解决");
+	
+</script>
+
+<script type="text/javascript">
+
+	console.log("--new 一下工厂模式的函数，这叫做 寄生构造函数模式");
+	//简洁的工厂模式
+	function Person_fc(name, age) {
+		return { //直接返回引用类型字面量
+			name : name,
+			age : age,
+			say : function() {
+				console.log("名字:" + this.name + ";年龄:" + this.age);
+			}
+		};
+	}
+	var person = new Person_fc("小刘", 26);
+	person.say();
+	console.log("person.constructor:"+(person.constructor));
+	console.log("person instanceof Person_fc:" + (person instanceof Person_fc));//person是由new Object()来构建的而不是由不是new Person_fc()构建的，所以不是Person_fc的实例
+	
+	console.log("--寄生构造函数模式的实际应用");
+	//Array的构造函数不可以改变，那么可以通过寄生的方式，成为Array对象，然后添加新方法
+	function SpecialArray() {
+		var values = new Array();//定义一个数组对象
+		values.push.apply(values, arguments);//把SpecialArray()函数的参数，都push到数组对象中
+		values.showString = function() {//定义showString()方法
+			return this.join("|");
+		};
+		return values;//返回数组对象，工厂模式
+	}
+
+	var colors = new SpecialArray("red", "blue", "green");
+	console.log(colors.showString()); 
+	console.log("colors instanceof SpecialArray:"+(colors instanceof SpecialArray));
+	console.log("colors instanceof Array:"+(colors instanceof Array));
+</script>
+</html>

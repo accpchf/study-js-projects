@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>使用framest做框架</title>
+</head>
+
+<!--注意不要用 body标签 <body> -->
+<frameset cols="25%,50%,25%">
+	<frame src="frame_a.html" />
+	<frame src="frame_b.html" />
+	<frame src="frame_c.html" />
+	<noframes>
+		<body>
+			<p>浏览器不支持frameset</p>
+		</body>
+	</noframes>
+</frameset>
+<!-- </body> -->
+</html>

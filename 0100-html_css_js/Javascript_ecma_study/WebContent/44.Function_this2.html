@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>函数的this</title>
+</head>
+<script type="text/javascript">
+var name = "Global";
+
+var Bob = {
+	    name: "Bob",
+	    showName: function(){
+	    	console.log("Bob showName()");
+	        console.log(this.name);
+	    }
+	};
+
+var Tom = {
+	    name: "Tom",
+	    showName: Bob.showName //引用Bob对象的showName方法
+}
+	
+Bob.showName();
+Tom.showName();　　//理解this是指向当前执行者
+
+var var_show = Bob.showName;//定义一个变量，把Bob对象的show方法赋值给该变量
+var_show();　　//是Global对象执行，所以调用全局变量name
+
+var Jerry = {
+	    name: "Jerry",
+	    showName: function(){
+	    	console.log("Jerry showName()");
+	        var fun = Bob.showName;//在Jerry showName()方法里面直接调用Bob对象的showName()方法，this指向全局对象
+	        fun();
+	    }
+	};
+Jerry.showName();	
+</script>
+</html>

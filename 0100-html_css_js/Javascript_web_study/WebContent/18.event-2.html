@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>事件处理程序-DOM和代码加载顺序问题</title>
+</head>
+<script type="text/javascript">
+var a_button=document.getElementById("button_id");//DOM元素还没加载，不能引用
+a_button.onclick=function(){
+  alert("I was clicked !");
+}; 
+
+</script>
+<body>
+<input type="button" value="点击" id="button_id" />
+</body>
+</html>

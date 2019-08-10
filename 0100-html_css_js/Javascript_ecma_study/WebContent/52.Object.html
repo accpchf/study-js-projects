@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>所有对象都是Object的实例</title>
+</head>
+<script type="text/javascript">
+console.log("----包装类:");
+console.log("  typeof Boolean = " + typeof new Boolean(true));
+console.log("  typeof Number = " + typeof new Number("123"));
+console.log("  typeof String = " + typeof new String("abc"));
+console.log("----包装类:");
+console.log("  typeof Array = " + typeof new Array(1,2,3));
+var array=[1,2,3];
+console.log("  typeof Array = " + typeof array);
+console.log("  typeof Date = " + typeof new Date());
+
+var fn=function(){}
+console.log("  typeof function = " + typeof fn);//function 比较特殊
+console.log( "function instanceof Object:"+(fn instanceof Object) );
+var fn2=new Function("args1","");
+console.log("  typeof Function = " + typeof fn2);
+console.log( "function instanceof Object:"+ (fn2 instanceof Object));
+console.log("  typeof 构造函数  function = " + typeof new fn());//利用构造函数来创建对象，我们等下讲
+
+console.log("  typeof Object = " + typeof new Object());
+var obj={}
+console.log("  typeof 字面量对象  = " + typeof obj);
+var pattern=/abc/i;
+console.log("  typeof RegExp = " + typeof pattern);
+console.log("  typeof RegExp = " + typeof new RegExp("abc","i"));
+
+console.log("  typeof window = " + typeof window);//window就是浏览器的全局对象
+console.log("  typeof this = " + typeof this);//this 指向全局对象
+console.log("  typeof Math = " + typeof Math);
+
+console.log("以上列举的是ECMAScript 规范的内置的引用类型，今后还要学 BOM和DOM，这些宿主对象，都是Object的实例");
+
+
+</script>
+</html>

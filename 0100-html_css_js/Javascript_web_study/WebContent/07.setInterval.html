@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>间歇调用 setInterval() </title>
+<script type="text/javascript">
+	function startTime() {
+		var today = new Date();
+		var h = today.getHours();
+		var m = today.getMinutes();
+		var s = today.getSeconds();
+		// add a zero in front of numbers<10
+		m = checkTime(m);
+		s = checkTime(s);
+		document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+	}
+
+	function checkTime(i) {
+		if (i < 10) {
+			i = "0" + i;
+		}
+		return i
+	}
+	var timeid=setInterval("startTime()", 50);
+	
+	function stop_interval(){
+		//console.log("stop:"+timeid);
+		window.clearInterval(timeid);
+	}
+	function start_interval(){
+		timeid=setInterval("startTime()", 50);
+		//console.log("start:"+timeid);
+	}
+</script>
+</head>
+<body>
+<div id="txt"></div> 
+<button onclick="stop_interval();">Stop </button>
+<button onclick="start_interval();">Start </button>
+后一个间歇调用可能会在前一个间歇调用结束之前启动，这样就没办法停止了。所以，实际开发用超时调用来模拟间歇调用比较常见，间歇调用setInterval()，不常用，容易有问题
+</body>
+
+</html>

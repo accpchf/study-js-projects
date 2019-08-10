@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>eval()函数</title>
+</head>
+<script type="text/javascript">
+//"use strict";
+console.log('hello world');
+eval("console.log('hello world');");
+
+var bar = 'bar';
+var foobar = eval('"foo" + bar');//eval()执行的代码可以引用在包含环境中定义的变量
+
+eval("console.log(foobar);");
+
+function fun(){
+	var foobar2="foobar2";
+}
+
+//eval("console.log(foobar2);");//错误, eval()执行的代码不可以引用在 不在包含环境中定义的变量
+
+eval(" function say(){console.log('hello 0100');} ");
+
+say();//同一执行环境下，可以引用eval()定义的函数，但是在严格模式下这是错
+
+
+/*
+ * 如何把字符串对象，转换为js对象
+ */
+console.log(eval("{}")); // return undefined
+console.log(eval("({})"));// return object
+
+var obj_str="{name:'小李',age:'23'}";//定义一个字符串对象，以后这个字符串对象都会从后端获取
+var obj=new Object(obj_str);//用new Object 转换试一试
+console.log(obj);
+var obj2=(obj_str);//用（）转换试一试
+console.log(obj2);
+console.log(eval("("+obj_str+")"));
+var obj3=eval("("+obj_str+")");
+console.log(obj3);
+</script>
+</html>

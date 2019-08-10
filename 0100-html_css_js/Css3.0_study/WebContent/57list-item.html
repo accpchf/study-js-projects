@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> display:list-item </title>
+	<style type="text/css">
+		/* 设置div以list-item的盒模型显示 */
+		div{
+			display: list-item;
+			margin-left: 20px;
+		}
+		
+		div>div{
+			display: list-item;
+			margin-left: 40px;
+		}
+	</style>
+</head>
+<body>
+用ul,li来设置
+<ul style="padding-left: 20px;">
+	<li>皇家马德里队</li>
+	<li>巴塞罗那队</li>
+	<li>曼彻斯特联队</li>
+	<li>利物浦队</li>
+</ul>
+<hr/>
+用div,display: list-item;来设置
+<div>皇家马德里队</div>
+<div>巴塞罗那队</div>
+<div>曼彻斯特联队</div>
+<div>利物浦队</div>
+<hr/>
+display: list-item;也可以来设置嵌套列表
+<div>
+	西班牙俱乐部
+	<div>皇家马德里队</div>
+	<div>巴塞罗那队</div>
+	<div>马德里竞技队</div>
+</div>
+<div>
+	英格兰俱乐部
+	<div>曼彻斯特联队</div>
+	<div>利物浦队</div>
+	<div>阿森纳队</div>
+</div>
+</body>
+</html>

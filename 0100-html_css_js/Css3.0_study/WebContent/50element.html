@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>元素分类</title>
+	<style type="text/css">
+		.common1{
+			width: 300px;
+			height: 40px;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+设置:div和span，width: 300px;height: 40px;border: 1px
+<div class="common1">div元素一，是块元素</div>
+<div class="common1">div元素二，是块元素</div>
+<div class="common1">
+	<div>
+		div元素三，默认宽度为父元素的整个宽度
+	</div>
+
+</div>
+
+<br/>行内非替换元素,设置高、宽、边距是被忽略的:<br/>
+<span class="common1">span元素一，是行内非替换元素</span>
+<span class="common1">span元素二，是行内非替换元素</span>
+<label class="common1">label元素，是行内非替换元素</label>
+
+<br/><br/>行内替换元素，可以设置高、宽、边距:<br/><br/>
+<img src="img/face.gif" class="common1" />
+<input type="button" value="按钮" class="common1" />
+<textarea class="common1">textarea元素，是行内替换元素</textarea>
+<select class="common1">
+	<option>行内替换元素</option>
+	<option>行内替换元素</option>
+</select>
+<br/>
+
+</body>
+</html>

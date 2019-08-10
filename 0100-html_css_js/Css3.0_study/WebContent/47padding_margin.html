@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>内外边距</title>
+	<style type="text/css">
+		/* 设置div元素的宽度和高度 */
+		div.out {
+			width: 300px;
+			height: 150px;
+			border: 1px solid black;
+		}
+		div.in {
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+padding:10px 50px;
+<div class="out" style="padding:10px 50px;">
+测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</div>
+padding:10px 30px 2px 60px;
+<div class="out" style="padding:10px 30px 10px 60px;">
+测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</div>
+
+margin:30px 50px;
+<div class="out">
+	<div class="in" style="margin:30px 50px;">
+	测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字
+	</div>
+</div>
+<br/><br/>
+只有外边距可以设置负值:
+margin:-10px 50px;<br/><br/>
+<div class="out">
+	<div class="in" style="margin:-10px 50px;">
+	测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字
+	</div>
+</div>
+<br/>
+margin:10px 40px 10px 90px;
+<div class="out">
+	<div class="in" style="margin:10px 40px 10px 90px;">
+测试文字测试文字测试文字测试文字测试文字测试文字测试文字测试文字</div>
+</div>
+<br/>
+可以修改宽度观察效果，理解auto<br/>
+margin-left:auto;margin-right:50px;<br/>
+<div style="width: 300px;height:100px;border: 1px solid black;" >
+	<p style="margin-left:auto;margin-right:50px;">
+	一段文字
+	</p>
+</div>
+<br/>
+margin-left:50px;;margin-right:auto;
+<div  style="width: 300px;height:100px;border: 1px solid black;" >
+	<p style="margin-left:50px;;margin-right:auto;">
+	一段文字
+	</p>
+</div>
+</body>
+</html>

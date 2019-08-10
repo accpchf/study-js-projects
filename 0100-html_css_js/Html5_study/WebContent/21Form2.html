@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> form元素 </title>
+</head>
+<body>
+点击文字，焦点会自动放到输入框里:<br/>
+<form action="http://www.ks0100.com" method="get">
+	<!--for="username" 是id="username"  -->
+	<label accesskey="a" for="username">单行文本框：</label>
+	<input id="username" name="username" type="text" /><br />
+	<!-- 少用这种嵌套关联方式，因为有的浏览器不支持，如IE -->
+	<label accesskey="b">密码框：<input id="password" name="password" type="password" />
+	</label><br />
+	
+	<input id='ok' type="submit" value="登录0100培训" />
+</form>
+<hr/>
+<form action="http://www.ks0100.com" method="get">
+	
+	<button type="button"><b>提交</b></button><br />
+	<button type="submit"><img src="image/wjc.gif" alt="0100java"/>
+		</button><br />
+</form>
+<hr/>
+<form action="http://www.ks0100.com" method="post">
+	下面是简单下拉菜单：<br />
+	<select id="skills" name="skills">
+		<option value="java">Java语言</option>
+		<option value="c">C语言</option>
+		<option value="ruby">Ruby语言</option>
+	</select><br /><br /><br />
+	下面是允许多选的列表框：<br />
+	<select id="country" name="country" multiple="multiple" size="4">
+		<option value="China">中国</option>
+		<option value="American">美国</option>
+		<option value="Japan">日本</option>
+	</select><br />
+	下面是允许多选的列表框：<br />
+	<select id="province" name="province" multiple="multiple" size="6">
+		<optgroup label="江苏省">
+			<option value="苏州市" label="aaaaaaaa">苏州市</option>
+			<option value="南京市">南京市</option>
+			<option value="南通市">南通市</option>
+		</optgroup>
+		<optgroup label="上海市">
+			<option value="宝山区">宝山区</option>
+			<option value="徐汇区"> 徐汇区</option>
+		</optgroup>
+	</select><br />
+	<button type="submit"><b>提交</b></button><br />
+</form>
+<hr/>
+<form action="http://www.ks0100.com" method="post">
+	简单多行文本域：<br />
+	<textarea cols="20" rows="2"></textarea><br />
+	
+	只读的多行文本域：<br />
+	
+	<textarea cols="28" rows="4" readonly="readonly">
+中华人民共和国
+美利坚合众国
+日本国
+	</textarea><br />
+	<button type="submit"><b>提交</b></button><br />
+</form>
+</body>
+</html>

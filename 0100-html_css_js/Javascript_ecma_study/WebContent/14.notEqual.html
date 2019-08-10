@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>not equal</title>
+</head>
+<script type="text/javascript">
+	if(1!="1"){
+		console.log("1!=\"1\"");
+	}
+	if(1!=="1"){
+		console.log("1!==\"1\"");
+	}
+	
+	var num=1;
+	if( !(num instanceof Number)){
+		console.log(" num=1 is not Number ");
+	}
+	num=new Number(1);
+	if(num instanceof Number){
+		console.log(" num=new Number(1) is Number ");
+	}
+	if(num instanceof Object){
+		console.log("  num=new Number(1) is Object ");
+	}
+</script>
+</html>

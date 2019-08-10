@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>数组转换字符串</title>
+</head>
+<script type="text/javascript">
+var array=["red","blue",true,123,null,undefined,{}];
+console.log(array);
+console.log("toString():"+array.toString());//数组转换为用,分隔的字符串
+console.log("valueOf():"+array.valueOf());
+
+var obj1={
+		//引用类型可以重写toLocaleString()和toString()方法
+		toLocaleString:function(){
+			return "obj1 toLocaleString";
+		},
+		toString:function(){
+			return "obj1 toString";
+		}
+};
+var obj2={
+		//引用类型可以重写toLocaleString()和toString()方法
+		toLocaleString:function(){
+			return "obj2 toLocaleString";
+		},
+		toString:function(){
+			return "obj2 toString";
+		}
+};
+
+var obj_array=[obj1,obj2];
+console.log(obj_array);
+console.log(obj_array.toString());
+console.log(obj_array.toLocaleString());
+console.log(obj_array.join("|"));//join()方法调用toString()方法，只是改变分隔符
+</script>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>对属性的特性设置 defineProperty</title>
+</head>
+<script type="text/javascript">
+
+
+var person = {};//定义一个对象,
+Object.defineProperty(person, "name", { 
+						configurable:false,//false,不可以delete 
+						enumerable:false,//false,不可以在for-in返回属性
+    					writable: false,//false,只读
+    					value: "小李"
+						}
+					);
+console.log(person);
+person.name = "小王";
+console.log("修改name = '小王'："+person.name);
+console.log("用for-in打印属性:");
+for(var p in person){
+	console.log(p);
+}
+delete person.name;
+console.log("用delete运算符 删除name属性");
+console.log("person.name:"+person.name);
+
+//以下代码错误，configurable已经设置为false，不能再设置configurable
+/*
+Object.defineProperty(person, "name", {
+	configurable:true,//false,不可以delete 
+	value: "小李"
+	}
+);
+*/
+</script>
+<script type="text/javascript">
+console.log("用构造函数和原型模式组合，创建类型");
+function Person(name,age){
+	this.name=name;
+	this.age=age;
+	this.friends=[];
+}
+Person.prototype={
+	constructor:Person,//这样会导致属性的enumerable为true
+	say:function(){
+		console.log("名字:" + this.name + ";年龄:" + this.age);
+	},
+	showFriends:function(){
+		var f_array=this.friends;
+		console.log(this.name+"有"+f_array.length+"个朋友:");
+		for(i=0;i<f_array.length;i++){
+			console.log(f_array[i]);
+		}
+	}
+}
+
+var p1=new Person("小明",12);
+p1.friends.push("小王","小华","小芬");
+console.log("因为constructor:Person，使enumerable为true，所以'constructor'会在for-in循环中打印出来");
+for(p in p1){
+	console.log(p);
+}
+Object.defineProperty(Person.prototype, "constructor", { //注意传进去的原型对象Person.prototype
+	enumerable:false,//false,不可以在for-in返回属性
+	value: Person
+	}
+);
+console.log("设置constructor属性enumerable=false特性后,'constructor'不会打印出来");
+for(p in p1){
+	console.log(p);
+}
+</script>
+<script type="text/javascript">
+console.log("设置多个属性的特性");
+function Person2(name,age){
+	this.name=name;
+	this.age=age;
+	this.friends=[];
+}
+Person2.prototype={
+	getName:function(){
+		return this.name;
+	},	
+	setName:function(name){
+		this.name=name;
+	},
+	getAge:function(){
+		return this.age;
+	},	
+	setAge:function(age){
+		this.age=age;
+	},
+	getFriends:function(){
+		return this.friends;
+	},	
+	setFriends:function(args){
+		this.friends.push(args);
+	},
+	say:function(){
+		console.log("名字:" + this.name + ";年龄:" + this.age);
+	},
+	showFriends:function(){
+		var f_array=this.friends;
+		console.log(this.name+"有"+f_array.length+"个朋友:");
+		for(i=0;i<f_array.length;i++){
+			console.log(f_array[i]);
+		}
+	}
+}
+Object.defineProperty(Person2.prototype, "constructor", {
+	enumerable:false,//false,不可以在for-in返回属性
+	value: Person2
+});
+//可以用defineProperties设置多个属性
+Object.defineProperties(Person2,{ //这里应该传入具体的实例对象，如下面的p2，而不是构造函数对象，但是传人实例对象，对于封装就没有意义了，所以封装不能用这个方法
+	name:{
+		writable: false
+	},
+	name2:{
+		value: "name2"
+	},
+	age:{
+		writable: false
+	},
+	friends:{
+		writable: false
+	}
+});
+var p2=new Person2("小明",32);
+p2.say();
+p2.name="小王";
+console.log("名字:"+p2.name);//名字可以被修改
+console.log("名字:"+p2.name2);
+</script>
+</html>

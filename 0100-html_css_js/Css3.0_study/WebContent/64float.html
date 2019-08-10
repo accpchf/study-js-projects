@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>float</title>
+<style type="text/css">
+ div.out{
+ 	border:1px dashed black;
+ 	width:600px;
+ 	height:200px;
+ 	margin:20px;
+ }
+ div.inner{
+ 	border:1px solid black;
+ 	width:150px;
+ 	height:50px;
+ 	margin:10px ;
+  }
+  
+  div.gold{
+  	background-color:gold;
+  }
+  div.green{
+  	background-color:green;
+  }
+  div.pink{
+  	background-color:pink;
+  }
+  div.out2{
+ 	border:1px dashed black;
+ 	width:400px;
+ 	height:200px;
+ 	margin:20px;
+ }	
+</style>
+</head>
+<body>
+<h3>不浮动的框</h3>
+<div class="out">
+	<div class="inner gold"></div>
+	<div class="inner green"></div>
+	<div class="inner pink"></div>
+</div>
+<h3> <font color="gold">gold</font>向右浮动，原来的空间被后面的green占据</h3>
+<div class="out">
+	<div class="inner gold" style="float:right"></div>
+	<div class="inner green"></div>
+	<div class="inner pink"></div>
+</div>
+<h3><font color="gold">gold</font>向左浮动，原来的空间被后面的green占据，但是green和gold是重叠，浮动的元素gold在表面，所以green被覆盖</h3>
+<div class="out">
+	<div class="inner gold" style="float:left"></div>
+	<div class="inner green" ></div>
+	<div class="inner pink" ></div>
+</div>
+<h3><font color="green">green</font>向左浮动,pink占据green原来的空间，因为gold和pink的上下外边距是可以合并的，所以两框距离20px;
+但是浮动元素green和的gold外边距是不合并的，所以两框边距40px</h3>
+<div class="out">
+	<div class="inner gold" ></div>
+	<div class="inner green" style="float:left;" ></div>
+	<div class="inner pink" ></div>
+</div>
+
+<h3>所有3个框向左浮动</h3>
+<div class="out">
+	<div class="inner gold" style="float:left"></div>
+	<div class="inner green"  style="float:left" ></div>
+	<div class="inner pink" style="float:left"></div>
+</div>
+
+<h3>所有3个框向左浮动，父元素框不够宽，pink换行</h3>
+<div class="out2">
+	<div class="inner gold" style="float:left"></div>
+	<div class="inner green"  style="float:left" ></div>
+	<div class="inner pink" style="float:left"></div>
+</div>
+<h3>所有3个框向左浮动，pink被gold卡住了</h3>
+<div class="out2">
+	<div class="inner gold" style="float:left;height:70px"></div>
+	<div class="inner green"  style="float:left" ></div>
+	<div class="inner pink" style="float:left"></div>
+</div>
+</body>
+</html>

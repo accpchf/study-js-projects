@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> display:块元素和行内元素的转换 </title>
+	<style type="text/css">
+		body>*{
+			width: 300px;
+			height: 40px;
+			border: 1px solid black;
+		}
+		/* 改为inline盒模型 */
+		._inline{
+			display:inline;
+		}
+		/* 改为block盒模型 */
+		._block{
+			display:block;
+		}
+	</style>
+</head>
+<body>
+<div class="_inline">div元素一,display:inline</div>
+<div class="_inline">div元素二,display:inline</div>
+<span class="_block">span元素一,display:block;</span>
+<span class="_block">span元素二,display:block;</span>
+<label class="_block">label元素，display:block;</label>
+以下元素display:block：
+<img src="img/face.gif" class="_block" />
+<input type="button" value="按钮" class="_block" />
+<textarea class="_block">textarea元素</textarea>
+<select class="_block">
+	<option>行内替换元素</option>
+	<option>行内替换元素</option>
+</select>
+
+</body>
+</html>

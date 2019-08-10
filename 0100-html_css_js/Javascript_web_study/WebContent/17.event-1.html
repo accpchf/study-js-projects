@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>事件处理程序-时差问题</title>
+</head>
+<body>
+<input type="button" value="点击" onclick="show()"/>
+</body>
+
+<script type="text/javascript">
+
+//这个函数是为了模拟事件的时差问题，show()这个函数在页面加载3秒钟后才会生成，如果3秒钟内执行点击事件，那么会有错。
+//现实情况下，有很多js代码是通过外部链接引用的方式如<script type="text/javascript" src="http://xx.js"/> ，如果网络传输慢，并且js代码很大没有下载完毕
+//这时候，dom元素已经加载完毕，然后通过事件去触发js代码中的方法，就会出错
+setTimeout(function () {  
+	var js=document.createElement("script"); 
+	var text="function show(){"
+		+"alert('显示消息');"
+		+"}";
+	js.text =text; 
+	document.getElementById("div1").appendChild(js);
+},3000)
+
+
+</script>
+<div id="div1"></div>
+</html>

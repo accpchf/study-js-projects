@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>position:relative</title>
+<style type="text/css">
+
+div{
+	border:1px solid black;
+	width:250px;
+	height:30px;
+	margin-left:20px;
+	padding-left:20px;
+}
+._pos_left{
+   position: relative;
+   left: -20px
+}
+._pos_right{
+   position: relative;
+   left: 20px
+}
+.div-a{
+   position: relative;
+   left: 500px;
+   top:50px;
+}
+.div-c{
+   position: absolute;
+   left: 500px;
+   top:250px;
+}
+.div-e{
+   position: fixed;
+   left: 500px;
+   top:350px;
+}
+</style>
+</head>
+
+<body>
+	<div>一个正常的div</div>
+	<div class="_pos_left">相对于正常div的左移的20px的div</div>
+	<div class="_pos_right">相对于正常div的右移的20px的div</div>
+	<hr/>	
+	<!--div-a 的占用的空间还遗留着  -->
+	<div class="div-a">div-a</div>
+	<div>div-b</div>
+	<input type="text" value="输入框" />
+	<hr/>	
+	<div class="div-c">div-c</div>
+	<!--div-d 会把 div-c 占用的空间填充-->
+	<div>div-d</div>
+	<input type="text" value="输入框" />
+	<hr/>	
+	
+	<div class="div-e">div-e,可以缩小浏览器窗口查看</div>
+	<div>div-f</div>
+	<input type="text" value="输入框" />
+</body>
+
+</html>

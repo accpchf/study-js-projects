@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>自执行函数</title>
+</head>
+<script type="text/javascript">
+
+/*
+
+这是java代码，类似C++，C#等 i变量的生命周期是在{}，叫做块级作用域
+
+for(int i=0;i<5;i++){
+	System.out.println(i);
+}
+ System.out.println(i); //错误
+ 
+*/
+
+//javascript 没有块级作用域，它的作用域只有全局和局部函数两个
+
+function printNumbers(){
+	for(var i=0;i<5;i++){
+		console.log(i);
+	}
+	console.log("------");
+	//var i; //即使这样声明，也会被解释器视而不见
+	console.log(i);//i是函数的局部变量
+}
+printNumbers();
+
+console.log("模仿块级作用域");
+function printNumbers2(){
+	//匿名自执行函数里面，i 就是该匿名函数的私有变量了
+	(function(){
+		for(var i=0;i<5;i++){
+			console.log(i);
+		}
+	})();
+	console.log("------");
+	//console.log(i);//错误，not defined
+}
+printNumbers2();
+</script>
+
+<script type="text/javascript">
+console.log("------实现封装");
+(function(){
+	var _name,_age;//私有变量
+	
+	//注意Person 没有用var定义，那么就是全局变量，构造函数相当于闭包，以后会讲闭包
+	Person=function(name,age){
+		_name=name;
+		_age=age;
+	};
+	Person.prototype.getName=function(){
+		return _name;
+	};
+	
+	Person.prototype.setName=function(name){
+		 _name=name;
+	};
+	
+	Person.prototype.getAge=function(){
+		return _age;
+	};
+	
+	Person.prototype.setAge=function(age){
+		_age=age;
+	};
+	
+	var _say=function(){
+		console.log("私有方法");
+	}
+	Person.prototype.say=function(){
+		_say();
+		console.log("名字:" + _name + ";年龄:" + _age);
+	}
+})();
+
+var p1=new Person("小明",23);
+p1.say();
+var p2=new Person("小华",33);
+console.log("p2.say():");
+p2.say();
+console.log("p1.say():");
+p1.say();
+//Person的实例p1和p2，都共享_name和_age，这两个变量，并没有在匿名函数中释放掉，所以这种类型的封装，只适合于常量的封装。
+console.log("p1.say===p2.say:"+(p1.say===p2.say));
+</script>
+
+<script type="text/javascript">
+var CHINA=(function(){
+	var constants={
+		JIANG_SHU:"江苏",
+		SHANG_HAI:"上海",
+		KUN_SHANG:"昆山"
+	}; 
+	var china =function(){};
+	china.getConstants=function(key){
+	    return constants[key];
+	 };
+	 
+	return china;//匿名函数自执行后，返回的是一个对象
+})();
+console.log(CHINA.getConstants("JIANG_SHU"));
+console.log(CHINA.getConstants("SHANG_HAI"));
+console.log(CHINA.getConstants("KUN_SHANG"));
+console.log("简化写法----");
+
+var CHINA2=(function(){
+	var china ={};
+	china.getConstants=function(key){
+	    return {
+			JIANG_SHU:"江苏",
+			SHANG_HAI:"上海",
+			KUN_SHANG:"昆山"
+		}[key];//简化一下
+	 };
+	 
+	return china;//匿名函数自执行后，返回的是一个对象
+})();
+
+console.log(CHINA2.getConstants("JIANG_SHU"));
+console.log(CHINA2.getConstants("SHANG_HAI"));
+console.log(CHINA2.getConstants("KUN_SHANG"));
+</script>
+</html>

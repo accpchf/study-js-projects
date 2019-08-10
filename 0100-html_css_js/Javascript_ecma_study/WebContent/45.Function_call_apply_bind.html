@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>函数对象的call()和apply()</title>
+</head>
+<body>
+	<input type="text" id="myText" value="输入框" />
+</body>
+<script type="text/javascript">
+	console.log("----------第一段，改变this的指向对象");
+	function Obj() {
+		this.value = "一个属性值";
+	}
+	var value = "全局变量";
+
+	function funtion1() {
+		console.log(this.value);
+	}
+
+	console.log("window.funtion1():");
+	window.funtion1(); //window对象就是window系统的Global对象， global 变量，同funtion1()
+	console.log("分别用call()、apply()、bind()来测试： ");
+	funtion1.call(window);
+	//funtion1.apply(window);//同funtion1.call(window);
+	//funtion1.bind(window);//把对象和方法绑定，但是不立即执行，如果要立即执行是这样 funtion1.bind(window)();后面空()表示执行空参数方法
+	console.log("document.getElementById('myText')");
+	funtion1.call(document.getElementById('myText'));//
+	//funtion1.apply(document.getElementById('myText'));
+	//funtion1.bind(document.getElementById('myText'))();
+
+	console.log("funtion1.call(new Obj())");
+	funtion1.call(new Obj());
+	//funtion1.apply(new Obj())
+	//funtion1.bind(new Obj())();
+
+	console.log("----------第二段,方法呼叫对象来调用");
+	var obj = new function() {
+		this.a = "a 属性";
+	}
+
+	var myfunc = function(x) {
+		var a = "a 局部变量";
+		console.log("myfunc this.a:" + this.a);
+		console.log("参数x=" + x);
+	}
+
+	console.log("调用 myfunc(\"传人参数\")");
+	myfunc("传人参数");
+	console.log("分别用call()、apply()、bind()来测试：");
+	myfunc.call(obj, "传人参数"); //1
+	//myfunc.apply(obj,["传人参数"]);//2.和call一样
+	//myfunc.bind(obj)("传人参数");//3.
+	//var _bind_myfunc=myfunc.bind(obj);//4.可以先bind，再调用
+	//_bind_myfunc("传人参数");
+
+	console.log("----------第三段,实现继承");
+
+	function base() {
+		this.base_member = "base的值";
+		this.base_method = function() {
+			console.log("这是base_method()方法");
+			console.log(this.base_member);
+		}
+	}
+
+	function extend() {
+		console.log("调用extend()方法");
+		//注释以下代码会有错
+		base.call(this);//调用base对象的call()方法，extend()函数就能够继承base对象的方法和属性，并调用
+		//base.apply(this);//和call一样
+		//base.bind(this)();
+
+		console.log(base_member);
+		base_method();
+	}
+	extend();
+
+	console.log("----------第四段,组合使用");
+	function Animal() {
+		this.name = 'Animal';
+		this.showName = function() {
+			console.log(this.name);
+		}
+	}
+
+	function Cat() {
+		this.name = 'Cat';
+	}
+
+	var animal = new Animal();
+	var cat = new Cat();
+	//通过call或apply方法或bind()方法，将原本属于Animal对象的showName()方法交给对象cat来使用了。  
+	animal.showName.call(cat);
+	//animal.showName.apply(cat);//和call一样
+	//animal.showName.bind(cat)();
+
+	console.log("----------第五段,用apply()方法做代理 ，改造console.log()");
+	console.log([ 1, 2, "abc" ])
+	console.log([ 1, 2, "abc" ].toString());
+	function log() {
+		console.log.apply(console, arguments);//console是对象，console.log是方法，arguments是形参数组，
+	};
+	log(1);
+	log(1, 2, "abc");
+
+	console.log("----------第五段,bind多次,始终以第一次为准");
+	var bar = function() {
+		console.log(this.x);
+	}
+	var three = {
+		x : 3
+	}
+	var four = {
+		x : 4
+	}
+	var func = bar.bind(three).bind(four);
+	console.log("bind 两次");
+	func(); 
+
+	var five = {
+		x : 5
+	}
+	var func = bar.bind(three).bind(four).bind(five);
+	console.log("bind 三次");
+	func(); 
+</script>
+
+</html>

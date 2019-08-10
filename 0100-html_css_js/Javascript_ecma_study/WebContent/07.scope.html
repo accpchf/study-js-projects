@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>scope</title>
+</head>
+
+<script type="text/javascript">
+	// 定义全局变量test
+	var test = "全局变量";
+	// 定义函数checkScope
+	function checkScope() {
+		//局部变量是覆盖全局变量的，所以默认值为undifined
+		console.log( "test="+test );
+		// 定义局部变量
+		var test = "局部变量";
+		// 输出局部变量
+		console.log("test="+test);
+
+	}
+	checkScope();
+</script>
+<script type="text/javascript">
+	console.log(test);//上面<script>的js和这里<script>的js都被按照顺序输入到解释器里
+	function f1(obj) {
+		// 定义变量i，变量i的作用范围是整个函数
+		var i = 0;
+		if (typeof obj == "object") {
+			// 定义变量j，变量j的作用范围是整个函数内，而不仅仅是在if块内。
+			var j = 5;
+			for (var k = 0; k < 10; k++) {
+				// 因为JavaScript没有代码块范围
+				// 所以k的作用范围是整个函数内，而不是循环体内
+				console.log(k);
+			}
+		}
+		// 即使出了循环体，k的值依然存在
+		console.log("k="+k +";j=" + j);
+	}
+	f1(document);//传人一个document对象，以后会讲
+	console.log("k="+k + ";j=" + j);//错误了，k和j的变量在函数里面定义
+</script>
+
+</html>

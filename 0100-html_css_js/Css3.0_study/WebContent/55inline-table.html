@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> display:inline-table </title>
+	<style type="text/css">
+		td {
+			border: 1px solid black;
+		}
+		._table{
+			width: 360px;
+			/* 合并表格边框,后面css学表格相关属性 */
+			border-collapse: collapse;
+			/* 设置表格显示为inline-table盒模型 */
+			display: inline-table;
+			
+		}
+	</style>
+</head>
+<body>
+
+前面内容
+<table style="border-collapse: collapse;">
+	<tr>
+		<td>0100JAVA培训</td>
+		<td>0100JAVA基础班</td>
+	</tr>
+	<tr>
+		<td>0100JAVA就业班</td>
+		<td>0100JAVA大数据班</td>
+	</tr>
+</table>
+后面内容
+<br/>
+前面内容
+<table class="_table">
+	<tr>
+		<td>0100JAVA培训</td>
+		<td>0100JAVA基础班</td>
+	</tr>
+	<tr>
+		<td>0100JAVA就业班</td>
+		<td>0100JAVA大数据班</td>
+	</tr>
+</table>
+后面内容
+</body>
+</html>

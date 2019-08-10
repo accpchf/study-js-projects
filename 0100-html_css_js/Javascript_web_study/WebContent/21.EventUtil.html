@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>跨浏览器事件处理程序</title>
+</head>
+<body>
+该html分别在火狐浏览器，谷歌浏览器，ie9，ie8，ie7下运行，观察结果
+<input type="button" value="跨浏览器事件监听" id="button_id" />
+</body>
+<script type="text/javascript">
+var EventUtil = {
+  //注册
+  addHandler: function(element, type, handler){
+    if (element.addEventListener){
+      element.addEventListener(type, handler, false);
+    } else if (element.attachEvent){
+      element.attachEvent("on" + type, handler);
+    } else {
+      element["on" + type] = handler;
+    }
+  },
+  //移除注册
+  removeHandler: function(element, type, handler){
+    if (element.removeEventListener){
+            element.removeEventListener(type, handler, false);
+    } else if (element.detachEvent){
+            element.detachEvent("on" + type, handler);
+    } else {
+            element["on" + type] = null;
+    }
+  }             
+ };
+
+var btn=document.getElementById("button_id");
+var f1=function(){
+	alert("aaa");
+} 
+var f2=function(){
+	alert("bbb");
+} 
+EventUtil.addHandler(btn,"click",f1);
+EventUtil.addHandler(btn,"click",f2);
+</script>
+</html>

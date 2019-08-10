@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>超时调用setTimeout() 2</title>
+</head>
+<body>
+	<form>
+		<input type="button" value="开始计时！" onClick="timedCount()" /> 
+		<input type="text" id="txt"> <input type="button" value="停止计时！" onClick="stopCount()" />
+	</form>
+
+	<p>请点击上面的“开始计时”按钮。输入框会从 0 开始一直进行计时。点击“停止计时”可停止计时。</p>
+</body>
+<script type="text/javascript">
+	var c = 0;
+	var timeoutId;
+	function timedCount() {
+		document.getElementById('txt').value = c;
+		c = c + 1;
+		timeoutId = setTimeout("timedCount()", 1000);//每隔一秒钟调用自己
+	}
+
+	function stopCount() {
+		clearTimeout(timeoutId); //用clearTimeout()函数来取消超时调用
+	}
+</script>
+</html>

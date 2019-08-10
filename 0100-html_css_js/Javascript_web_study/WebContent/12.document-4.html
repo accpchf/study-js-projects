@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>document对象-文档结构树的遍历</title>
+</head>
+<body>
+	<div id="_div">
+		<p>这是p1</p>
+		<p>这是p2</p>
+		<p>这是p3</p>
+		<p>这是p4</p>
+	</div>
+	<div>
+		<input type="button" value="firstElementChild" onclick="_firstElementChild()" />
+		<input type="button" value="lastElementChild" onclick="_lastElementChild()" />
+		<input type="button" value="next" onclick="_next()" />
+		<input type="button" value="previous" onclick="_previous()" />
+	</div>
+	<div>
+		<input type="button" value="count" onclick="_count()" />
+	</div>
+</body>
+<script type="text/javascript">
+var _div = document.getElementById("_div");
+	
+	function _firstElementChild(){
+		
+         alert(_div.firstElementChild.innerHTML);
+	}
+	function _lastElementChild(){
+		
+        alert(_div.lastElementChild.innerHTML);
+	}
+	
+	var current_node=null;
+	function _next(){
+		if(current_node==null||current_node==_div.lastElementChild){
+			current_node=_div.firstElementChild;
+		}else{
+			current_node=current_node.nextElementSibling;        
+		}
+		 alert(current_node.innerHTML);
+	}
+	
+	function _previous(){
+		if(current_node==null||current_node==_div.firstElementChild){
+			current_node=_div.lastElementChild;
+		}else{
+			current_node=current_node.previousElementSibling;        
+		}
+		 alert(current_node.innerHTML);
+	}
+	
+	function _count(){
+		 alert(_div.childElementCount );
+	}
+</script>
+</html>

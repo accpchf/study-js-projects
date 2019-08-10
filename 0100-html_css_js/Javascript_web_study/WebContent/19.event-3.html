@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>事件处理程序-DOM属性绑定事件</title>
+</head>
+<body>
+<input type="button" value="点击" id="button_id" />
+</body>
+<script type="text/javascript">
+var a_button=document.getElementById("button_id");
+a_button.onclick=function(){
+  alert("aaa !");
+}; 
+a_button.onclick=function(){
+	  alert("bbb !");
+}; 
+//最后的事件绑定，覆盖前面
+a_button.onclick=function(){
+	  alert("ccc !");
+}; 
+</script>
+</html>

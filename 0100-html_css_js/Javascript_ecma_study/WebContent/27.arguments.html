@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>函数的参数</title>
+</head>
+<script type="text/javascript">
+var f1=function(arg1,arg2,arg3){
+	console.log("---------使用命名参数调用");
+	console.log("第一个参数:"+arg1);
+	console.log("第二个参数:"+arg2);
+	console.log("第三个参数:"+arg3);
+}
+f1('a','b',1);
+f1('a','b');//没有传进去的参数默认值是undefined
+f1('a','b','c','d');
+
+var f2=function(){
+	console.log("---------不使用命名参数");
+	console.log("第一个参数:"+arguments[0]);
+	console.log("第二个参数:"+arguments[1]);
+	console.log("第三个参数:"+arguments[2]);
+	console.log("参数个数:"+arguments.length);
+}
+f2('a','b',1);
+f2('a','b');
+f2('a','b','c','d');
+
+
+var f3=function(arg1,arg2,arg3){
+	console.log("---------命名参数和arguments对象一起使用");
+	console.log("第一个参数:"+arguments[0]);
+	console.log("第二个参数:"+arguments[1]);
+	console.log("第三个参数:"+arguments[2]);
+	console.log("参数个数:"+arguments.length);
+	if(arguments.length==2){
+		console.log("两个参数相加:"+(arg1+arguments[1]));
+	}
+	
+}
+f3('a','b',1);
+f3('a','b');
+f3('a','b','c','d');
+
+var f4=function(arg1,arg2){
+	//"use strict";//使用严格模式arguments[1]和arg2的值是不同步的，否则是同步的
+	console.log("---------arguments对象的索引值和命名参数值是同步的");
+	console.log("arguments[1]="+arguments[1]+";arg2="+arg2);
+	console.log("arguments[1]+=10;");
+	arguments[1]+=10;
+	console.log("arguments[1]="+arguments[1]+";arg2="+arg2);
+	console.log("arg2-=10;");
+	arg2-=10;
+	console.log("arguments[1]="+arguments[1]+";arg2="+arg2);
+}
+f4(1,2);
+
+var num=1;
+console.log("------变量值是:"+num);
+var f5=function(arg1){
+	arg1+=arg1;
+	console.log("参数是按值传递的，加1后值="+arg1);
+}
+f5(num);
+console.log("变量传参数后值是:"+num);
+
+console.log("-------函数名可以当作参数传递");
+//定义一个通用函数
+function callSomeFunction(someFunction, someArgument){
+    return someFunction(someArgument);
+}
+
+var add10 =function(num){
+    return num + 10;
+}
+
+var result1 = callSomeFunction(add10, 10);
+console.log("返回类型:"+(typeof result1));
+console.log(result1);   
+
+var getGreeting=function(name){
+    return "Hello, " + name;
+}
+
+var result2 = callSomeFunction(getGreeting, " 0100 培训班");
+console.log("返回类型:"+(typeof result2));
+console.log(result2);   
+
+</script>
+</html>

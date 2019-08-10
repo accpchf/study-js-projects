@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>元素的属性的读取和设置</title>
+</head>
+<body>
+	<div id="div1">
+		<p id="p1" class="class1">我是第一个P</p>
+		<img src="image/eg_sun.gif" alt="我是一张图片" id="img1" /> 
+		<input type="text" value="我是一个文本框" id="input1" />
+	</div>
+	<div>
+		<input type="button" value="输入框按钮" onclick="show1()" />
+		<input type="button" value="图片按钮" onclick="show2()" />
+		<input type="button" value="p按钮" onclick="show3()" />
+	</div>
+	<div>
+		<input type="button" value="改变图片" onclick="change()" />
+	</div>
+</body>
+<script type="text/javascript">
+	function showInput1() {
+		var node = document.getElementById("input1");
+		// 读取value属性
+		console.log("node.value:"+node.value);
+		console.log("getAttribute:"+node.getAttribute("value"));
+		console.log("attributes:"+node.attributes.value.value);
+		console.log("attributes:"+node.attributes[2].value);//索引下标有点奇怪，一般不用
+	}
+	
+	function show2(){
+		var node = document.getElementById("img1");
+        //读取alt属性
+        console.log("node.alt:"+node.alt);
+        console.log("getAttribute:"+node.getAttribute("alt"));
+        console.log("attributes:"+node.attributes.alt.value);
+        console.log("attributes:"+node.attributes[1].value);//索引下标有点奇怪，一般不用
+	}
+	function show3(){
+		var node = document.getElementById("p1");
+		//读取class属性
+		 console.log("class:"+node.class);
+		 console.log("className:"+node.className);
+		 console.log("getAttribute:"+node.getAttribute("class"));
+		 console.log("attributes:"+node.attributes.class.value);
+	}
+	
+	var i=true;
+	var node = document.getElementById("img1");
+	function change(){
+		if(i){
+			node.src = "image/eg_merglobe.gif"; 
+			i=false;
+		}else{
+			node.src = "image/eg_sun.gif"; 
+			i=true;
+		}
+	}
+</script>
+</html>

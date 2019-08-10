@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>overflow</title>
+<style type="text/css">
+div {
+	background-color: #00FFFF;
+	width: 150px;
+	height: 150px;
+	
+}
+.div2 {
+	width: 300px;
+	height: 70px;
+	border: 1px solid black;
+	white-space: nowrap;
+	margin: 15px;
+}
+</style>
+</head>
+<body>
+	<p>如果元素中的内容超出了给定的宽度和高度属性，overflow 属性可以确定是否显示滚动条等行为。</p>
+	<h4>原文</h4>
+	<div>
+		这个属性定义溢出元素内容区的内容会如何处理。如果值为scroll，不论是否需要，用户代理都会提供一种滚动机制。因此，有可能即使元素框中可以放下所有内容也会出现滚动条。默认值是 visible。
+	</div>
+	<br/><br/><br/>
+	<h4>overflow: scroll</h4>
+	<div style="overflow: scroll">
+		这个属性定义溢出元素内容区的内容会如何处理。如果值为scroll，不论是否需要，用户代理都会提供一种滚动机制。因此，有可能即使元素框中可以放下所有内容也会出现滚动条。默认值是 visible。
+	</div>
+	<h4>overflow: hidden</h4>
+	<div style="overflow: hidden">
+	这个属性定义溢出元素内容区的内容会如何处理。如果值为scroll，不论是否需要，用户代理都会提供一种滚动机制。因此，有可能即使元素框中可以放下所有内容也会出现滚动条。默认值是 visible。
+	</div>
+	<h4>overflow: auto；auto和scroll差不多</h4>
+	<div style="overflow: auto">
+	这个属性定义溢出元素内容区的内容会如何处理。如果值为scroll，不论是否需要，用户代理都会提供一种滚动机制。因此，有可能即使元素框中可以放下所有内容也会出现滚动条。默认值是 visible。
+	</div>
+	<h4>overflow-x:hidden</h4>
+	<div style="overflow-x:hidden">
+	这个属性定义溢出元素内容区的内容会如何处理。如果值为scroll，不论是否需要，用户代理都会提供一种滚动机制。因此，有可能即使元素框中可以放下所有内容也会出现滚动条。默认值是 visible。
+	</div>
+	
+	<div class="div2" style="overflow-x:hidden">
+	<h3>overflow-x:hidden;</h3>
+		测试文字测试文字测试文字测试文字测试文字测试文字
+	</div>
+	<div class="div2" style="overflow-y:hidden">
+	<h3>overflow-y:hidden;</h3>
+	测试文字测试文字测试文字测试文字测试文字测试文字
+</div>
+</body>
+</html>

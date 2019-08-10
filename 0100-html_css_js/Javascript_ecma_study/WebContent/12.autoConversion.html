@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>autoConversion</title>
+</head>
+<script type="text/javascript">
+	console.log("----undefined 转换");
+	var _undefined;
+	console.log(_undefined + "");//undefined
+	console.log(_undefined + 0);//NaN
+	if (!_undefined) {
+		console.log("undefined is false");
+	}
+	
+	console.log("----null 转换");
+	var _null=null;
+	console.log(_null + "");//null
+	console.log(_null + 0);//0
+	if (!_null) {
+		console.log("null is false");
+	}
+	
+	console.log("----数字字符串转换");
+	var str="100";
+	console.log(str+2);//1002
+	console.log(2+str);//2100
+	console.log(str*2);//200
+	if (str) {
+		console.log("str is true");
+	}
+	
+	console.log("----非数字字符串转换");
+	var str2="abc";
+	console.log(str2*1);//NaN
+	
+	console.log("----空字符串转换");
+	var empty_str="";
+	console.log(empty_str*1);//0
+	if(!empty_str){
+		console.log("空字符串  is false");
+	}
+	
+	console.log("----0转换");
+	var _0=0;
+	if(!_0){
+		console.log("0  is false");
+	}
+	
+	console.log("----NaN转换");
+	var _NaN="abc"*1;
+	console.log(_NaN);
+	if(!_NaN){
+		console.log("NaN  is false");
+	}
+	
+	console.log("----Infinity转换");
+	var _Infinity=1/0;
+	console.log(_Infinity);
+	if(_Infinity){
+		console.log("Infinity  is true");
+	}
+	
+	console.log("---- -Infinity转换");
+	var _Infinity2=-1/0;
+	console.log(_Infinity2);
+	if(_Infinity2){
+		console.log("-Infinity  is true");
+	}
+	
+	console.log("---- 数字转换");
+	var num=123;
+	if(num){
+		console.log("123  is true");
+	}
+	var num2=123.456;
+	if(num2){
+		console.log("123.456  is true");
+	}
+	
+	console.log("---- true转换");
+	var _true=true;
+	console.log(_true+0);
+	console.log("---- false转换");
+	var _false=false;
+	console.log(_false+0);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</html>

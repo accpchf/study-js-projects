@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>多级编号</title>
+<style type="text/css">
+/* 为div的子h2元素定义了一个计数器：parent_counter
+		   并使用counter-reset重置sub_counter计数器 */
+div>h2 {
+	counter-increment: parent_counter;
+	counter-reset: sub_counter;
+}
+/* 为div的子div元素定义了一个计数器：sub_counter */
+div>div {
+	counter-increment: sub_counter;
+}
+/* 在div的子h2元素的前端插入parent_counter计数器和一个点  */
+div>h2:before {
+	content: counter(parent_counter, georgian) '.';
+	font-size: 20pt;
+	font-weight: bold;
+}
+/* 在div的子div元素的前端插入自定义的sub_counter计数器 */
+div>div:before {
+	content: '第' counter(sub_counter, cjk-ideographic) '本.';
+	font-size: 14pt;
+	font-weight: bold;
+	margin-left: 24px;
+}
+</style>
+</head>
+<body>
+	<div>
+		<h2>江苏省</h2>
+		<div>南京市</div>
+		<div>苏州市</div>
+		<div>盐城市</div>
+		<h2>上海市</h2>
+		<div>黄浦区</div>
+		<div>静安区</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript继承-原型式继承和寄生原型式继承模式</title>
+</head>
+<script type="text/javascript">
+function Animal(legs){
+	this.type="动物";
+	this.legs=legs;
+	if(typeof this.show1 !="function"){
+		Animal.prototype.show1=function(){
+			console.log("show1 种类是:"+this.type+";有"+this.legs+"条腿");
+		}
+	}
+	this.show4=function(){
+		console.log("show4 种类是:"+this.type+";有"+this.legs+"条腿");
+	}
+}
+/* 原型式继承模式函数
+
+function object(o) {
+　　　　function F() {}
+　　　　F.prototype = o;
+　　　　return new F();
+}
+*/
+//改造的原型式继承模式函数,把参数和变量改一下，好理解，Temp是临时对象，用作中介；Super是父类对象
+function object(Super) {
+　　　　function Temp() {}
+　　　　Temp.prototype = Super;
+　　　　return new Temp();//Temp()构造函数的作用域，只在函数内，外部函数无法调用这个构造函数
+}
+//这里cat 是一个具体实例对象，而不是前面的“猫类”，因为用了原型式继承模式函数，就没法用构造函数，没有构造函数，也没法用prototype了，所以无法定义“猫类”
+var cat=object(new Animal(4));
+console.log("cat.prototype:"+cat.prototype);
+cat.name="波斯猫";
+cat.color="白色";
+cat.showCat=function(){
+	this.show1();//在子类可以继承父类的实例方法
+	this.show4();//在子类可以继承父类的实例方法
+	console.log("它是一个"+this.type);//在子类可以继承父类的属性
+	console.log("名字:"+this.name+";颜色:"+this.color);
+}
+
+console.log(cat.type+";"+cat.legs);
+cat.showCat();
+
+//单纯使用原型式继承模式，更像是一种数据拷贝，（我们之后会讲javascript的对象拷贝），我们可以改进一下，创造一个继承父类的子类
+
+console.log("-----把原型式继承模式放在一个函数里来创建子类，这叫寄生原型式继承模式");
+
+function createAnimalSub(Super,name,color){
+	var clone=object(Super);
+	clone.name=name;
+	clone.color=color;
+	clone.showCat=function(){
+		this.show1();//在子类可以继承父类的实例方法
+		this.show4();//在子类可以继承父类的实例方法
+		console.log("它是一个"+this.type);//在子类可以继承父类的属性
+		console.log("名字:"+this.name+";颜色:"+this.color);
+	}
+	return clone;
+}
+var cat2=createAnimalSub(new Animal(4),"野猫","黑色");
+console.log(cat2.type+";"+cat2.legs);
+cat2.showCat();
+//总结：这个缺点和不用prototype的构造函数一样，每次都会实例化方法，浪费内存
+</script>
+</html>

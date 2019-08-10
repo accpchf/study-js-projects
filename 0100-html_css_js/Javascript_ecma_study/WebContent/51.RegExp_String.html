@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>String类型中的正则匹配</title>
+</head>
+<script type="text/javascript">
+var s = 'I love you and you love me, yau ';
+var pattern = /y.u/;
+console.log("字符串:"+s+";正则表达式:"+pattern);
+console.log("s.search(pattern):"+s.search(pattern));  
+
+console.log("s.match(/y.u/):"+s.match(/y.u/));  
+console.log("s.match(/y.u/g):"+s.match(/y.u/g));  
+
+console.log("s.replace(\'you\', \'zichi\') :"+s.replace('you', 'zichi')); //可以不用正则
+console.log("s.replace(/y.u/, \'zichi\'):"+s.replace(/y.u/, 'zichi')); //只替换第一个
+console.log("s.replace(/y.u/g, \'zichi\'):"+s.replace(/y.u/g, 'zichi')); //g模式全部替换   
+
+console.log("分隔字符串 s.split(pattern):"+ s.split(pattern)); 
+console.log("分隔字符串 s.split(pattern,1):"+ s.split(pattern,1)); 
+</script>
+</html>

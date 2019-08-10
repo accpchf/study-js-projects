@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>对CSS的读取和设置</title>
+</head>
+<body>
+	<div id="div1" style="width: 100px; height: 100px; background-color: red"></div>
+	<div>
+		<input type="button"  value="显示css" onclick="show()"/>
+		<input type="button"  value="改变css" onclick="change()"/>
+	</div>
+</body>
+<script type="text/javascript">
+	function show() {
+		alert(document.getElementById("div1").style.backgroundColor);
+	}
+	var i=true;
+	function change(){
+		if(i){
+			//注意Javascript css属性名 和HTML css属性名是不一致的
+		 	document.getElementById("div1").style.backgroundColor = "yellow";
+			i=false;
+		}else{
+			document.getElementById("div1").style.backgroundColor = "red";
+			i=true;
+		}
+	}
+</script>
+</html>

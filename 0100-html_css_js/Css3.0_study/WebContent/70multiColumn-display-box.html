@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> 多栏布局-display:box; </title>
+	<style type="text/css">
+		body{
+			margin:0px;
+		}
+		div#container {
+			display: box;
+			display: -moz-box;
+			display: -webkit-box;
+			width: 960px;
+			text-align: left;
+		}
+		#container>div {
+			border: 1px solid #aaf;
+			border-radius: 12px 12px 0px 0px;
+			background-color: #ffc;
+			padding:5px;
+		}
+	</style>
+</head>
+<body>
+<div style="margin:auto;text-align:center;">
+<div id="container">
+	<div style="width:220px">
+		<h2>0100培训班</h2>
+		<ul>
+			<li>java基础班</li>
+			<li>java就业班</li>
+			<li>java大数据提高班</li>
+		</ul>
+	</div>
+<div style="width:500px;">
+	<h2>0100培训课程简介</h2>
+		<h4>java基础班:</h4>
+		内容涵盖 计算机基础、Java SE编程基础、多线程、GUI、网络编程、jdk内核以及jdk各种版本特性。
+		该课程会比较各大培训机构的课程，以java工作常用的知识为重点内容，力求把最完善和最丰富的内容教授给学员。
+		<h4>java就业班:</h4>
+		1、内容基本覆盖J2EE体系结构.能够做到，其他机构有的内容我们都有，其他机构没有我们也有。<br/>
+		2、课程还包括就业指导和面试回答，帮助“百分百”努力的学员，找到好工作。
+</div>
+<div style="width:240px">
+	<h2>老师简介</h2>
+	<ul>
+		<li>陈老师</li>
+		<li>杨老师</li>
+		<li>郭老师</li>
+		<li>卫老师</li>
+	</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

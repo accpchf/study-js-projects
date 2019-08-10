@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>数组定义</title>
+</head>
+<script type="text/javascript">
+//用Array构造函数来创建数组
+console.log("用Array构造函数来创建数组");
+var array1=new Array();
+var array2=new Array(20);
+//能够同时放入六大数据类型
+var array3=new Array(1,"abc",true,null,undefined,{});
+var array4=Array("abc");//new 可以省略
+console.log(array1);
+console.log(array2);
+console.log(array3);
+console.log("array3[0]="+array3[0]+";array3[1]="+array3[1]);
+console.log(array4);
+console.log("array4[0]="+array4[0]+";array4[1]="+array4[1]);//没有数组越界的错误
+console.log("用数组字面量表示法，符号[]");
+var array11=[];
+var array12=[20];
+var array13=[1,"abc",true,null,undefined,{x:1,y:"aaa"}];
+console.log(array11);
+console.log(array12);
+console.log(array13);
+var array14=["one","two",3];
+console.log("array14:"+array14);
+array14[2]=33;//修改第三项
+array14[3]=4;//新增第四项
+console.log("array14:"+array14);
+
+console.log("数组大小可以动态调整");
+var array21=["one","two","three"];
+console.log("array21:"+array21);
+console.log("array21.length:"+array21.length);
+console.log("动态调整array21的长度,array21.length=2");
+array21.length=2;
+console.log("array21[2]="+array21[2]);
+console.log("array21:"+array21);
+
+console.log("利用length可以方便的在数组末尾添加新项");
+array21[array21.length]="four";
+array21[array21.length]="five";
+console.log("array21:"+array21);
+console.log("也可以在任何大于长度的索引上添加新项");
+array21[10]=10;//中间项都是undefined
+array21["9"]=9;//同array21[9]，索引值可以为字符串数值
+array21[1.00]=1;//同array21[1]，索引值可以为小数点都是0的浮点数
+array21[-1]=-1;//Array 是引用类型，这里是定义-1的属性名，并且赋值为-1
+console.log("array21.length:"+array21.length);
+console.log(array21);
+console.log("array21[\"9\"]="+array21["9"]);
+console.log("array21[1.00]="+array21[1.00]);
+console.log("array21[-1]="+array21[-1]);
+</script>
+</html>

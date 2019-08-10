@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript多态</title>
+</head>
+<script type="text/javascript">
+
+function Bird(){
+	this.legs=2;
+	this.move=function(){ 
+		return "Bird move";
+	}
+}
+
+
+function Maque(){
+	this.move=function(){
+		return "麻雀飞";
+	}
+}
+function Hen(){
+	this.move=function(){
+		return "母鸡走";
+	}
+}
+function Xiao_niao(){ //不用给小鸟定义任何属性和方法
+}
+
+//原型链方式，子类继承父类
+Maque.prototype = new Bird();
+Hen.prototype = new Bird();
+Xiao_niao.prototype = new Bird();
+
+var maque = new Maque();
+console.log(maque.move());	
+console.log(maque.legs);
+console.log("maque instanceof Maque:"+(maque instanceof Maque));
+console.log("maque instanceof Maque:"+(maque instanceof Bird));
+
+var hen = new Hen();
+console.log(hen.move());	
+
+var x_niao= new Xiao_niao();
+console.log(x_niao.move());
+
+</script>
+
+<script type="text/javascript">
+console.log("----借用构造函数和寄生原型式继承模式组合实现多态");
+function Animal(){
+	this.type="动物";
+	if(typeof this.move !="function"){
+		Animal.prototype.move=function(){
+			console.log ("Animal move");
+		}
+	}
+}
+
+//原型式继承模式函数
+function object(Super) {
+　　　　function Temp() {}
+　　　　Temp.prototype = Super;
+　　　　return new Temp();
+}
+
+
+function inheritPrototype(subType,superType){
+	var _prototype=object(superType.prototype);
+	_prototype.constructor=subType;
+	subType.prototype=_prototype;
+}
+
+function Cat(){
+	Animal.call(this);//借用构造函数,继承属性
+}
+inheritPrototype(Cat,Animal);//寄生原型式模式
+Cat.prototype.move=function(){
+	console.log("猫在跑!");
+}
+
+
+function Fish(){
+	Animal.call(this);//借用构造函数,继承属性
+}
+inheritPrototype(Fish,Animal);//寄生原型式模式
+Fish.prototype.move=function(){
+	console.log("鱼在游!");
+}
+
+
+function Dog(){
+	Animal.call(this);//借用构造函数,继承属性
+}
+inheritPrototype(Dog,Animal);//寄生原型式模式
+
+var cat=new  Cat();
+cat.move();
+console.log("cat instanceof Cat:"+(cat instanceof Cat));
+console.log("cat instanceof Animal:"+(cat instanceof Animal));
+var fish=new  Fish();
+fish.move();
+
+var dog=new  Dog();
+dog.move();
+</script>
+
+</html>

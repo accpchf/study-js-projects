@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>继承</title>
+</head>
+<script type="text/javascript">
+	var Chinese = {
+		nation : "中国",
+		birthPlaces : ['北京','上海','香港'],
+		say : function() {
+			console.log("我的国家是"+this.nation+";我说中文");
+		}
+	};
+	console.log("Chinese.prototype:"+Chinese.prototype);
+	
+	//原型式继承模式来完成拷贝
+	function object(Super) {
+	　　　　function F() {}
+	　　　　F.prototype = Super;
+	　　　　return new F();
+	}
+	console.log("利用原型式继承模式来完成拷贝");
+	var doctor = object(Chinese);
+	doctor.career = '医生';
+	console.log(doctor.nation);
+	doctor.say();
+	console.log(doctor.career);
+	doctor.nation ="美国";
+	console.log("Chinese.nation:"+Chinese.nation);//中国，相当于子类拷贝副本
+	doctor.birthPlaces.push("苏州");
+	console.log("doctor.birthPlaces:"+doctor.birthPlaces);
+	console.log("Chinese.birthPlaces:"+Chinese.birthPlaces);//影响了父类，所以拷贝方式，相当于浅拷贝，拷贝的是基本数据类型的属性，引用类型的属性把地址直接拷贝过来
+	
+	console.log("--------不利用原型链，把父对象的属性，全部拷贝给子对象，也能实现继承");
+	
+	function extendCopy(p) {
+	　　　　var c = {};
+	　　　　for (var i in p) {
+	　　　　　　c[i] = p[i];//这里i表示属性名
+	　　　　}
+	　　　　return c;
+	}
+	　var doctor2 = extendCopy(Chinese);
+	　doctor2.career = '医生';
+	 doctor2.say();
+	 console.log(doctor2.nation); // 中国
+	 doctor2.nation ="美国";
+	 console.log("Chinese.nation:"+Chinese.nation);
+	 doctor2.birthPlaces.push("昆山");
+	 console.log("doctor2.birthPlaces:"+doctor2.birthPlaces);
+	 console.log("Chinese.birthPlaces:"+Chinese.birthPlaces);//影响了父类，所以拷贝方式，相当于浅拷贝，拷贝的是基本数据类型的属性，引用类型的属性把地址直接拷贝过来
+	 
+	 console.log("--------实现深度拷贝");
+	 function deepCopy(p, c) {
+
+		　　　　var c = c || {};//c 表示引用类型的属性
+		　　　　for (var i in p) {
+		　　　　　　if (typeof p[i] === 'object') {
+		　　　　　　　　c[i] = (p[i].constructor === Array) ? [] : {};//区别数组和其他对象
+		　　　　　　　　deepCopy(p[i], c[i]);//这里用递归的方式，来完成拷贝
+		　　　　　　} else {
+		　　　　　　　　　c[i] = p[i];
+		　　　　　　}
+		　　　　}
+		　　　　return c;
+	}
+	　var doctor3 = deepCopy(Chinese);
+	　doctor3.career = '医生';
+	 doctor3.say();
+	 doctor3.birthPlaces.push("南京");
+	 console.log("doctor3.birthPlaces:"+doctor3.birthPlaces);
+	 console.log("Chinese.birthPlaces:"+Chinese.birthPlaces);//实现深度拷贝，
+</script>
+</html>

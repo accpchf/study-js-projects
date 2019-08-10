@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>locaton和history对象</title>
+</head>
+<body>
+<div>
+<input  type="button" value="打开新浪" onclick="to_url('http://www.sina.com.cn')"/>
+</div>
+<div>
+<input  type="button" value="打开163" onclick="to_url('http://www.163.com')"/>
+</div>
+<div>
+<input  type="button" value="刷新" onclick="javascript:window.location.reload()"/>
+</div>
+<div>
+<input  type="button" value="replace163" onclick="replace_url('http://www.163.com')"/>
+</div>
+<div>
+<input  type="button" value="后退" onclick="javascript:history.back()"/>
+</div>
+<div>
+<input  type="button" value="前进" onclick="javascript:history.forward()"/>
+</div>
+</body>
+<script type="text/javascript">
+console.log("pathname:"+window.location.pathname);
+console.log("hostname:"+window.location.hostname);
+var now = new Date();
+console.log("now:" + now);//为了演示刷新
+
+ function to_url(url){
+	 window.location.href=url;//加载
+	 //window.location.assign(url);//加载，效果一致,个别网站这样写，要知道
+ }
+ 
+ function replace_url(url){
+	 window.location.replace(url);//新的url覆盖当前url，使当前url不会出现在浏览器历史记录里
+ }
+</script>
+</html>

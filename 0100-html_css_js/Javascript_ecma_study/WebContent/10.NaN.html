@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NaN</title>
+</head>
+<script type="text/javascript">   
+	// 定义x的值为NaN
+	var x = 0 / 0; 
+	console.log("x="+x);
+	
+	// 判断两个NaN是否相等
+	if (x != x)  
+	{
+		console.log("NaN不等于NaN");
+	}
+	// 调用isNaN判断变量
+	if (isNaN(x)) 
+	{
+		console.log("x是一个NaN");
+	}
+	var y=11*"abc";
+	console.log("用js系统函数isFinite()来判断是不是正常数字");
+	//isFinite()的参数不是NaN、Infinity或-Infinity的时候返回true
+	if(isFinite(y)){
+		console.log("y="+y+"是正常数字");
+	}else{
+		console.log("y="+y+"不是正常数字");
+	}
+	
+	var z =3e30000;
+	
+	if(isFinite(z)){
+		console.log("z="+z+"是正常数字");
+	}else{
+		console.log("z="+z+"不是正常数字");
+	}
+</script>
+</html>

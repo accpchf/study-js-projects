@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>加载js</title>
+<!-- jquery-2.1.4.js 加载速度慢，可以放在后面 -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.js"></script> 
+<!-- 可以注释以下script，理解如果jquery-2.1.4.js没有下载完，就不会渲染下面的网页 -->
+<script type="text/javascript" src="js/example1.js"></script>
+<script type="text/javascript">
+   alert("这里是网页的js");
+</script>
+<script type="text/javascript" src="js/example2.js"></script> 
+</head>
+<body>
+<div>
+	<script type="text/javascript">
+	//Date是js的'类'，document是内置对象，可以直接拿来用
+	var dateObj=new Date();
+	document.write("当前时间:"+dateObj.getHours()+":"+dateObj.getMinutes()+":"+dateObj.getSeconds()+"<br/>");
+	</script>
+	这里是网页内容，必须等到jquery-2.1.4.js、example1.js和example2.js下载、解释和执行完才渲染网页
+</div>
+</body>
+<script type="text/javascript" src="js/example3.js"></script>
+<script type="text/javascript" src="js/example4.js"></script>
+</html>

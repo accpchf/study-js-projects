@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>函数</title>
+</head>
+<script type="text/javascript">
+	var myname;
+	fun1(myname);
+	myname=null;
+	fun1(myname);
+	function fun1(myname){
+		//注意运算符 ==和===
+		if(typeof myname == 'null'){
+			console.log("名字是null，请重新输入");
+		}else if(typeof myname == 'undefined'){
+			console.log("名字是undefined，请重新输入");
+		}else if(typeof myname == 'boolean'){
+			console.log("名字是布尔型，请重新输入");
+		}else if(typeof myname == 'number'){
+			console.log("名字是数字，请重新输入");
+		}else if(typeof myname == 'object'){
+			console.log("名字是对象型，请重新输入");
+		}else if(typeof myname == 'string'){
+			console.log("输入正确，名字是"+myname);
+		}
+	}
+	
+	
+</script>
+</html>

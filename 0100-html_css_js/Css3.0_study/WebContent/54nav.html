@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> display:inline-block;导航菜单 </title>
+	<style type="text/css">
+		body>div{
+			text-align: center;
+			margin: auto;
+		}
+		div>div{
+			/* 设置为inline-block盒模型，保证一行显示 */
+			display: inline-block;
+			border: 1px solid black;
+		}
+		a {
+			/* text-decoration，这里去掉a元素默认的下划线， */
+			text-decoration:none;
+			/* 设置为block盒模型，允许设置高度、宽度 */
+			display: block;
+			width: 120px;
+			padding: 10px;
+			/* 设置默认背景色 */
+			background-color: #eee;
+		}
+		a:hover {
+			/* 设置鼠标悬停时的背景色 */
+			background-color: #aaa;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+<div>
+	<div><a href="http://www.ks0100.com/">0100培训首页</a></div>
+	<div><a href="http://www.ks0100.com/col.jsp?id=115">JAVA学院</a></div>
+	<div><a href="http://www.ks0100.com/col.jsp?id=113">名师解惑</a></div>
+	<div><a href="http://www.ks0100.com/col.jsp?id=102">联系我们</a></div>
+</div>
+</body>
+</html>

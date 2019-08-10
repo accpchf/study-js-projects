@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>背景相关属性</title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		border:1px solid #000;
+		height:150px;
+		width: 250px;
+		background-repeat:no-repeat;
+		background-image:url('img/eg_smile.gif');"
+	}
+	</style>
+</head>
+<body>
+这个图片的信息是 高和宽都是128px的：<br/>
+原始:
+<div ></div>
+100px 100px:
+<div style="background-size:100px 100px;"></div>
+75px 75px:
+<div style="background-size:75px 75px;"></div>
+10px 150px:
+<div style="background-size:10px 150px;"></div>
+200px:
+<div style="background-size:200px;"></div>
+50%:
+<div style="background-size:50%;"></div>
+100% 100%;
+<div style="background-size:100% 100%;"></div>
+cover;和100%有区别，100%会拉伸图片，使其变形，cover不会，但是某些部分也许无法显示在背景定位区域中。
+<div style="background-size:cover;"></div>
+contain;把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域。
+<div style="background-size:contain;"></div>
+</body>
+</html>

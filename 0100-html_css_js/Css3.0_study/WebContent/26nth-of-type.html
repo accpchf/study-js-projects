@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> :nth-of-type </title>
+	<style type="text/css">
+		span {
+			display: block;
+			padding: 2px;
+		}
+		/* 匹配span选择器，且是与它同类型、同级的兄弟元素中
+			的2n+1（1、3、5...）个的CSS样式 */
+		span:nth-of-type(2n+1){
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+<div>
+		<div id="i1">恒大淘宝队</div>
+		<div id="i2">北京国安 队</div>
+		<span id="s1">山东鲁能 队</span> 
+		<span id="s2">上海申花 队</span> 
+		<span id="s3">杭州绿城 队</span> 
+		<span id="s4">上海上港 队</span>
+		<div id="i5">河南建业 队</div>
+</div>
+</body>
+</html>

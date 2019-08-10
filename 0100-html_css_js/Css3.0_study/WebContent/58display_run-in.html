@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> run-in </title>
+	<style type="text/css">
+		span {
+			border: 2px solid gray;
+			width: 200px;
+			height: 40px;
+			margin: 8px;
+		}
+		/* 为div元素定义边框、高度、宽度 */
+		div {
+			border: 1px solid black;
+			width: 400px;
+			height: 60px;
+		}
+	</style>
+</head>
+<body>
+正常效果，span1 是会放在div1 里面的<br/>
+<span id="span1" style="display:run-in;">display:run-in</span>
+<div id="div1">block的div</div>
+正常效果，span2 不会放在div2 里面的<br/>
+<span id="span2" style="display:run-in;">display:run-in</span>
+<div id="div2" style="display:inline-block;">inline-block的div</div>
+
+</body>
+</html>

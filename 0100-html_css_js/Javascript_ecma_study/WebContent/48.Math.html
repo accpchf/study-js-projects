@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Math</title>
+</head>
+<script type="text/javascript">
+	console.log("PI:" + Math.PI);
+	var max = Math.max(3, 54, 32, 16);
+	console.log("Math.max(3, 54, 32, 16):"+max); //54
+
+	var min = Math.min(3, 54, 32, 16);
+	console.log("Math.min(3, 54, 32, 16):"+min); //3
+	var array=[1,0,-1,123,3,4,29];
+	console.log("array:"+array);
+	
+	var max2=Math.max.apply(Math, array);//apply接受数组
+	console.log("max:"+max2);
+	var min2=Math.min.apply(Math, array);//apply接受数组
+	console.log("min:"+min2);
+	
+    console.log("Math.ceil(25.9)："+Math.ceil(25.9));     //26 天花板
+    console.log("Math.ceil(25.5):"+Math.ceil(25.5));     //26
+    console.log("Math.ceil(25.1):"+Math.ceil(25.1));     //26
+    
+    console.log("Math.round(25.9):"+Math.round(25.9));    //26 四舍五入
+    console.log("Math.round(25.5):"+Math.round(25.5));    //26
+    console.log("Math.round(25.1):"+Math.round(25.1));    //25
+            
+    console.log("Math.floor(25.9):"+Math.floor(25.9));    //25 地板
+    console.log("Math.floor(25.5):"+Math.floor(25.5));    //25
+    console.log("Math.floor(25.1):"+Math.floor(25.1));    //25
+    
+    
+    var num = Math.floor(Math.random() * 10 + 1);
+    console.log("1-10 之间的随机整数数是:"+num);
+    
+    function selectFrom(lowerValue, upperValue) {
+        var choices = upperValue - lowerValue + 1; //choices表示总共多少个数，upperValue表示最大值，lowerValue表示最小值
+        return Math.floor(Math.random() * choices + lowerValue);
+    }
+    
+    var num = selectFrom(2, 10);
+    console.log("2-10之间随机数:"+num);   //number between 2 and 10 (inclusive)
+    
+    var colors = ["red", "green", "blue", "yellow", "black", "purple", "brown"];
+    var color = colors[selectFrom(0, colors.length-1)];
+    console.log(color);  //any of the strings in the array
+</script>
+</html>

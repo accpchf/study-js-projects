@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>日期引用类型</title>
+</head>
+<script type="text/javascript">
+	var now = new Date();
+	console.log("now:" + now);
+	
+	var format_time=function(date){
+		return date.getFullYear() + "-" + date.getMonth() + "-"
+		+ date.getDate() + " " + date.getHours() + ":" + date.getMinutes()
+		+ ":" + date.getSeconds();
+	}
+	
+	console.log("格式后日期:" +format_time(now));
+	var myDate = new Date()
+	myDate.setFullYear(2008, 7, 9);
+	console.log("myDate:" + myDate);
+	console.log("格式后日期:" + format_time(myDate));
+</script>
+<script type="text/javascript">
+
+	//时间调用的是计算机本机时间，通过修改计算机本机时间，看到该时间会调整
+	function showTime() {
+		var today = new Date();
+		var h = today.getHours();
+		var m = today.getMinutes();
+		var s = today.getSeconds();
+		m = checkTime(m);
+		s = checkTime(s);
+		document.getElementById('time_span').innerHTML = h + ":" + m + ":" + s;
+		t = setTimeout('showTime()', 500);//js全局函数setTimeout(),每500毫秒回调一次showTime()函数
+	}
+
+	function checkTime(i) {
+		//补0操作
+		if (i < 10) {
+			i = "0" + i;
+		}
+		return i;
+	}
+	
+	
+</script>
+<body onload="showTime()">
+	<div>当前时间  <span id="time_span"></span></div>
+</body>
+
+
+</html>

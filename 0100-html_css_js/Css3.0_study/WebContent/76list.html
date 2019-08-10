@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> 列表相关属性 </title>
+	<style type="text/css">
+		li {
+			background-color: #aaa;
+		}
+		div>div{
+			background-color: #aaa;
+			display:list-item;
+			list-style-image:url(img/snow.gif);
+			list-style-position:inside;
+		}
+	</style>
+</head>
+<body>
+使用图片作为列表项标记
+<ul style="list-style-image:url(img/snow.gif);">
+	<li>曼彻斯特联队</li>
+	<li>巴塞罗那队</li>
+	<li>利物浦队</li>
+	<li>国际米兰队</li>
+</ul>
+使用大写罗马字母作为列表项标记
+<ol style="list-style-type:upper-roman;">
+	<li>曼彻斯特联队</li>
+	<li>巴塞罗那队</li>
+	<li>利物浦队</li>
+	<li>国际米兰队</li>
+</ol>
+使用表意数组作为列表项标记，并将列表标记放在列表元素内
+<ol style="list-style-type:cjk-ideographic;list-style-position:inside;">
+	<li>曼彻斯特联队</li>
+	<li>巴塞罗那队</li>
+	<li>利物浦队</li>
+	<li>国际米兰队</li>
+</ol>
+
+<br/>
+用div做列表,使用图片作为列表项标记
+<div>
+	<div>曼彻斯特联队</div>
+	<div>巴塞罗那队</div>
+	<div>利物浦队</div>
+	<div>国际米兰队</div>
+</div>
+</body>
+</html>

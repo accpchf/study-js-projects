@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>函数里面use strict</title>
+</head>
+<script type="text/javascript">
+  
+
+　　function notStrict() {
+		console.log("这是正常模式。");
+	　　　i=10;
+		console.log(i);
+		 "use strict";
+		with(document){
+		    write("您好 !");
+		    write("<br/>这个文档的标题是 : \"" + title + "\".");
+		    write("<br/>这个文档的 URL 是: " + URL);
+		    write("<br/>现在您不用每次都写出 document 对象的前缀了 !");
+		    write("<br/>");
+		 }
+　　}
+
+	function strict(){
+		　　 "use strict";//只要放在函数第一行，该函数就是严格模式，该函数不管是否调用，都被解释器认为要按严格模式语法检查执行
+			console.log("这是严格模式。");
+			i=10;
+			　
+			console.log(i);
+			with(document){
+			    write("您好 !");
+			    write("<br/>这个文档的标题是 : \"" + title + "\".");
+			    write("<br/>这个文档的 URL 是: " + URL);
+			    write("<br/>现在您不用每次都写出 document 对象的前缀了 !");
+			    write("<br/>");
+			 }
+	}
+
+</script>
+</html>

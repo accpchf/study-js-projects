@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>document对象-作为节点数的文档遍历</title>
+</head>
+<body>
+	<div id="_div">
+		<p>这是p1</p>
+		<p>这是p2</p>
+		<p>这是p3</p>
+		<p>这是p4</p>
+	</div>
+	<div>
+		<input type="button" value="打印节点" onclick="show()" />
+		<input type="button" value="p1" onclick="_p1()" />
+		<input type="button" value="p4" onclick="_p4()" />
+	</div>
+</body>
+<script type="text/javascript">
+	var _div = document.getElementById("_div");
+
+	
+	function show(){
+		for(i=0;i<_div.childNodes.length;i++){
+			if (_div.childNodes[i].nodeType == 1) {
+				console.log("innerHTML:"+_div.childNodes[i].innerHTML);
+            }
+            else if (_div.childNodes[i].nodeType == 3) {
+            	console.log("text:"+_div.childNodes[i].nodeValue);
+            }
+		}
+	}
+	
+	function _p1(){
+		alert(_div.firstChild.nextSibling.innerHTML);
+	}
+	
+	function _p4(){
+        alert(_div.lastChild.previousSibling.innerHTML);
+	}
+	
+	
+	
+</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>函数调用</title>
+</head>
+<script type="text/javascript">
+var area=function(_long,_width){
+	return _long*_width;
+}
+
+var areas=area(100,20)+area(50,20);//在语句表达式里面直接调用函数
+console.log("总面积:"+areas);
+
+//阶和函数，从1加到x
+var factorial=function(x){
+	if(x<=1)
+		return 1;
+	return x+factorial(x-1);//递归函数
+}
+
+console.log("阶和:"+factorial(100));
+var sum=function(x,y){return x+y}(10,20);//匿名函数定义后立即调用
+console.log("匿名函数定义后立即调用,sum="+sum);
+var r=area(factorial(100),function(a,b){return a-b}(20,10) );//把两个函数表达式，作为参数传递
+console.log("把两个函数表达式，作为参数传递，结果是:"+r);
+
+console.log("---回调函数");
+//回调函数
+//这个函数只是重在显示结果，而不关心，结果是怎么计算的
+function show(a,b,callback){
+	var result=callback(a,b);
+	console.log(result);
+}
+
+var sum=function(a,b){
+	console.log("求和:"+a+","+b);
+	return a+b;
+}
+var sub=function(a,b){
+	console.log("求减:"+a+","+b);
+	return a-b;
+}
+
+show(20,10,sum);//回调函数，只要传函数名就可以了
+show(20,10,sub);
+console.log("---把匿名函数的定义，作为回调函数传入");
+//把匿名函数的定义，作为回调函数传入
+show(20,10,function(a,b){
+	console.log("求乘:"+a+","+b);
+	return a*b;
+});
+
+</script>
+</html>

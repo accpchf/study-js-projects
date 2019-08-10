@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>其他运算符</title>
+</head>
+<script type="text/javascript">
+	
+	
+	console.log("---运算符 in")
+	var person={name:"名字",age:20};
+	console.log(person);
+	console.log(" \"x\" in person is " +("x" in person) );//in 判断属性名或方法名是不是属于这个对象
+	console.log(" \"name\" in person is " +("name" in person) );
+	console.log(" \"toString\" in person is " + ("toString" in person) );//对象继承ObjecttoString()方法
+	
+	var array=[7,8,9];
+	console.log(array);
+	console.log( "\"0\" in array is "+ ("0" in array));
+	console.log( " 1 in array is "+ (1 in array));
+	console.log( " 3 in array is "+ (3 in array));//in 是判断值是不是在数组索引范围内
+	
+	console.log("---运算符 delete")
+	var obj={name:"小明",age:20};
+	console.log(obj);
+	delete obj.name;
+	console.log("after delete obj.name; \"name\" in obj is " +("name" in obj) );
+	var array2=[7,8,9];
+	console.log(array2);
+	delete array2[2];
+	console.log("after delete array2[2]; array2[2]:"+array2[2]);
+	console.log("after delete array2[2]; 2 in array2 is " +(2 in array2) );
+	console.log("array2.length:"+array2.length);//delete后数组长度不变，索引2的元素的值是undefined而言
+</script>
+<body>
+<h4>void 运算符始终返回 undefined，经常用在事件里面。比如: window.open() 方法返回了新打开的窗口的引用。然后该对象将被转换成要显示的字符串。
+要避免这种效果，可以用 void 运算符调用 window.open() 函数：</h4>
+<a href="javascript:window.open('about:blank')">javascript:window.open('about:blank')</a><br/>
+<a href="javascript:void(window.open('about:blank'))">javascript:void(window.open('about:blank'))</a><br/>
+<a href="javascript:window.open('about:blank');void 0;">javascript:window.open('about:blank');void 0;</a><br/>
+
+<script type="text/javascript">
+ function f1(){
+	 alert("hello");
+	 return "hello";
+ }
+ function f2(){
+	// alert("hello");
+	console.log("f2()函数");
+	 return ;//可以注释掉
+ }
+ console.log( "f2() typeof is "+(typeof f2() ));
+</script>
+<a href="javascript:f1(); ">f1()</a><br/>
+<a href="javascript:f1();void 123 ">f1();void 123</a><br/>
+<a href="javascript:f2(); ">f2()</a><br/>
+</body>
+</html>

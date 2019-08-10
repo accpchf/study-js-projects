@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="checkbox" name="check" value="1" onclick="abc(this.value)">1
+	<input type="checkbox" name="check" value="2" onclick="abc(this.value)">2
+	<input type="checkbox" name="check" value="3" onclick="abc(this.value)">3
+	<input type="checkbox" name="check" value="4" onclick="abc(this.value)">4
+	<input type="checkbox" name="check" value="5"
+		onclick="parent.topFrame.cssrain(this.value)">5
+</body>
+<script type="text/javascript">
+	function abc(obj) {
+		var frm = window.parent.window.frames['topFrame'];
+		frm.cssrain(obj); //
+	}
+</script>
+</html>

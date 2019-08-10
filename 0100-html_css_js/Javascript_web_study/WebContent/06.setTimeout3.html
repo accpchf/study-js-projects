@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>超时调用setTimeout() 3</title>
+<script type="text/javascript">
+	var timeoutId=null;
+	function startTime() {
+		var today = new Date();
+		var h = today.getHours();
+		var m = today.getMinutes();
+		var s = today.getSeconds();
+		// add a zero in front of numbers<10
+		m = checkTime(m);
+		s = checkTime(s);
+		document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+		timeoutId = setTimeout('startTime()', 500);
+	}
+
+	function checkTime(i) {
+		if (i < 10) {
+			i = "0" + i;
+		}
+		return i
+	}
+	function stop_time(){
+		clearTimeout(timeoutId);
+	}
+</script>
+</head>
+
+<body onload="startTime()">
+	<div id="txt"></div>
+	<button onclick="stop_time();">Stop </button>
+	<button onclick="startTime();">Start </button>
+</body>
+</html>

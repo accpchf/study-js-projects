@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>:type</title>
+<style type="text/css">
+span {
+	display: block;
+	padding: 5px;
+}
+/* 匹配span选择器，且是与它同类型、同级的兄弟元素中的第一个的CSS样式 */
+span:first-of-type {
+	border: 1px solid black;
+}
+/* 匹配span选择器，且是与它同类型、同级的兄弟元素中的最后一个的CSS样式 */
+span:last-of-type {
+	background-color: #aaa;
+}
+/* 匹配span选择器，且是与它同类型、同级的兄弟元素中的第2个的CSS样式 */
+span:nth-of-type(2) {
+	color: #888;
+}
+/* 匹配span选择器，且是与它同类型、同级的兄弟元素中的倒数第2个的CSS样式 */
+span:nth-last-of-type(2) {
+	font-weight: bold;
+}
+</style>
+
+</head>
+<body>
+	<div>皇家马德里队</div>
+	<span>巴塞罗那队</span>
+	<span>曼彻斯特联队</span>
+	<span>利物浦队</span>
+	<span>国际米兰队</span>
+	<hr />
+	<div>
+		<div id="i1">恒大淘宝队</div>
+		<div id="i2">北京国安 队</div>
+		<span id="s1">山东鲁能 队</span> 
+		<span id="s2">上海申花 队</span> 
+		<span id="s3">杭州绿城 队</span> 
+		<span id="s4">上海上港 队</span>
+		<div id="i5">河南建业 队</div>
+	</div>
+</body>
+</html>

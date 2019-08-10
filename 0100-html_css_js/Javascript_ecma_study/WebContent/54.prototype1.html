@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>prototype</title>
+</head>
+<script type="text/javascript">
+function Person(){}
+//由prototype 定义的属性和方法被该类型的所有实例共享
+Person.prototype.name="小王";
+Person.prototype.age=20;
+Person.prototype.say=function(){
+	console.log("名字:" + this.name + ";年龄:" + this.age);
+}
+
+console.log("person1:");
+var person1=new Person();
+person1.say();
+console.log("person2:");
+var person2=new Person();
+person2.say();
+console.log("person1===person2:"+(person1===person2));//不是一个实例，但是由prototype 定义的属性和方法，都指向同一个类型，所以prototype是个指针
+console.log("person1.name===person2.name:"+(person1.name===person2.name));
+console.log("person1.age===person2.age:"+(person1.age===person2.age));
+console.log("person1.say===person2.say:"+(person1.say===person2.say));
+
+console.log("判断person2是否有实例属性name:"+person2.hasOwnProperty("name"));//hasOwnProperty(), Object 方法
+console.log("判断name是否in:"+("name" in person2));//只要属性在原型中或者在实例中，in 的结果就是true
+console.log("由实例定义的属性，覆盖prototype");
+person2.name="小李";//由实例定义的属性，覆盖prototype
+console.log("判断person2是否有实例属性name:"+person2.hasOwnProperty("name"));
+console.log("判断name是否in:"+("name" in person2));
+person2.say();
+console.log("person.name===person2.name:"+(person1.name===person2.name));
+console.log("删除name 属性后，prototype定义的还在");
+delete person2.name;
+console.log("判断person2是否有实例属性name:"+person2.hasOwnProperty("name"));
+console.log("判断name是否in:"+("name" in person2));
+person2.say();
+
+console.log("person1 instanceof Person:"+(person1 instanceof Person));
+//可以用isPrototypeOf 确定对象实例和对象原型的关系，检查传入的对象是否是另一个对象的原型，Object 方法
+console.log("Person.prototype.isPrototypeOf(person1):"+Person.prototype.isPrototypeOf(person1));
+console.log("Person.prototype.isPrototypeOf(person2):"+Person.prototype.isPrototypeOf(person2));
+//Object.getPrototypeOf()取得对象原型，它 是ECMAScript5的方法，要看浏览器是否支持
+console.log(Object.getPrototypeOf(person1));
+console.log(Object.getPrototypeOf(person1).name);
+console.log("Object.getPrototypeOf(person1)===Person.prototype:"+Object.getPrototypeOf(person1)===Person.prototype);
+
+
+console.log("创建最简洁的原型语法");
+function Person_sp(){}
+Person_sp.prototype={
+	//可以注释以下代码看一看	
+	constructor:Person_sp,//要注意把constructor属性指向构造函数Person_sp，不定义constructor不会自动指向构造函数
+	name:"小王",
+	age:20,
+	say:function(){
+		console.log("名字:" + this.name + ";年龄:" + this.age);
+	}
+};
+
+var person3=new Person_sp();
+person3.say();
+console.log("person3 instanceof Person2:"+(person3 instanceof Person_sp));
+console.log("用Person.prototype 定义的属性和方法，会自动把constructor属性指向构造函数Person");
+console.log("person1.constructor === Person:"+(person1.constructor === Person));
+console.log("person3.constructor === Person2:"+(person3.constructor === Person_sp));
+console.log("------查看字母量对象的prototype");
+var person4={
+		name:"小王",
+		age:20,
+		say:function(){
+			console.log("名字:" + this.name + ";年龄:" + this.age);
+		}
+};
+//只有通过调用构造函数,，prototype属性才会指向原型对象，字面量对象的prototype属性是undefined
+console.log("person4.prototype:"+person4.prototype);
+console.log("**总结：单纯用prototype，对象都共享 类型的数据，没有个性化，而我们需要既有类型数据，又有实例数据，解决方法是后面的构造函数和prototype组合使用");
+
+</script>
+</html>

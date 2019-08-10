@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>自执行函数</title>
+</head>
+<script type="text/javascript">
+//定义函数后立即调用
+var sum=function(x,y){return x+y}(10,20); 
+console.log(sum);
+
+//我们把函数内的代码，改造成直接打印结果
+var sum=function(x,y){console.log(x+y)}(10,20); 
+
+//把上面的函数改造，让它定义后自己执行，不用赋值给变量 ，怎么做，我们看以下方式
+
+/*第1种
+ * 错误，告诉我们函数声明必须要名
+        这个代码可以解释成两段，
+ function(x,y){console.log(x+y)};
+ (10,20);
+ */
+//function(x,y){console.log(x+y)}(10,20); 
+
+//第2种，在外面加()
+(function(x,y){console.log(x+y)}(10,20));
+//第3种,在定义部分function(x,y){console.log(x+y)}，外面加括号
+
+console.log("以下匿名函数都会自执行，知道一下，不需要掌握");
+console.log("0,");
+0, function(x,y){console.log(x+y)}(10,20);
+console.log("true &&");
+true &&function(x,y){console.log(x+y)}(10,20);
+console.log("!");
+!function(x,y){console.log(x+y)}(10,20);
+console.log("~");
+~function(x,y){console.log(x+y)}(10,20);
+console.log("-");
+-function(x,y){console.log(x+y)}(10,20);
+console.log("+");
++function(x,y){console.log(x+y)}(10,20);
+console.log("new");
+new function(x,y){console.log(x+y)}(10,20);
+</script>
+</html>

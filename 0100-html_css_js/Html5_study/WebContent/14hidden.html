@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> hidden属性 </title>
+</head>
+<body>
+<div id="target" hidden="true" style="height:80px">
+文字内容
+</div>
+<!--嵌入javascript来控制   !true =false ，同样 !false=true-->
+<button onclick="var t=document.getElementById('target');
+	t.hidden=!t.hidden;">显示/隐藏</button>
+</body>
+</html>

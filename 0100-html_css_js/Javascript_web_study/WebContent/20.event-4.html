@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>事件处理程序-事件监听器</title>
+</head>
+<body>
+该html分别在火狐浏览器，谷歌浏览器，ie9，ie8，ie7下运行，观察结果<br/>
+<input type="button" value="DOM标准下监听" id="button_id" />
+
+<input type="button" value="IE事件监听" id="button_id2" />
+
+</body>
+<script type="text/javascript">
+var a_button=document.getElementById("button_id");
+a_button.addEventListener("click", function(){
+		alert(this.id);//this指向事件目标元素button
+	}, false);//false冒泡阶段调用事件，true捕获阶段调用事件
+a_button.addEventListener("click", function(){
+		alert("aaa");
+	}, false);	
+a_button.addEventListener("click", function(){
+	alert("bbb");
+}, false);	
+
+
+var b_button=document.getElementById("button_id2");
+b_button.attachEvent("onclick",function(){
+	alert("this===window:"+(this===window));//说明this，指向window
+});
+b_button.attachEvent("onclick",function(){
+		alert("aaa");
+	});
+b_button.attachEvent("onclick",function(){
+	alert("bbb");
+});
+</script>
+
+</html>

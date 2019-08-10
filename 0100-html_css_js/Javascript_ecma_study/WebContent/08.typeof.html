@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>数据类型</title>
+</head>
+<script type="text/javascript">
+	
+	console.log(" typeof undefined = " + typeof undefined);
+	console.log(" typeof null = " + typeof null);
+	console.log(" typeof true = " + typeof true);
+	console.log(" typeof false = " + typeof false);
+	var _boolean=new Boolean(true);
+	console.log(" typeof Boolean = " + typeof _boolean);
+	console.log("  typeof 123 = " + typeof 123);
+	console.log("  typeof 123.456 = " + typeof 123.456);
+	console.log("  typeof Number = " + typeof new Number("123"));
+	console.log("字符串  typeof 'abc' = " + typeof 'abc');
+	console.log("  typeof String = " + typeof new String("abc"));
+	var obj = new Object();
+	console.log(" typeof Object = " + typeof obj);
+	//定义一个函数
+	var _fun = function() {
+	};
+	console.log("匿名函数类型  typeof function  = " + typeof _fun);
+	function fun(){
+		
+	}
+	console.log("命名函数类型  typeof function  = " + typeof fun);
+	var array=[1,2,3];
+	console.log("数组类型  typeof array  = " + typeof array);//数组其实是Array对象
+</script>
+</html>

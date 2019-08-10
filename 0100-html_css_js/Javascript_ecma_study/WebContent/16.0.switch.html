@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>switch语句</title>
+</head>
+<script type="text/javascript">
+function _switch(i){
+	switch (i){  //可以匹配不同类型值
+		case 1: //如果 i===1，从这里开始执行
+			console.log(1);
+			break;
+		case "2":  //如果 i==="2"，从这里开始执行
+			console.log("2");
+			break;
+		case "hello"+"world" : 
+			console.log("helloworld");
+			break;
+		default:
+			console.log("其他值");
+	}
+
+}
+console.log("_switch(1)");
+_switch(1);
+console.log("_switch(\"1\")");
+_switch("1");
+console.log("_switch(2)");
+_switch(2);
+console.log("_switch(\"2\")");
+_switch("2");
+console.log("_switch(\"helloworld\")");
+_switch("helloworld");
+
+function _switch_true(i){
+	switch(true){
+		case i<0:  //可以用表达式
+			console.log("负数");
+			break;
+		case i>=0 &&i<=10:
+			console.log("小于或等于10的正数");
+			break;
+		default:
+			console.log("大于10的数");
+	}
+}
+_switch_true(-1);
+_switch_true(5);
+_switch_true(20);
+</script>
+</html>

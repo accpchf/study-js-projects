@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>数组迭代</title>
+</head>
+<script type="text/javascript">
+	var numbers = [ 1, 2, 3, 4, 5, 4, 3, 2, 1 ];
+	console.log(numbers);
+	//every()方法每一项都符合条件，结果返回true
+	var everyResult = numbers.every(function(item, index, array) {
+		return (item > 2);
+	});
+
+	console.log("every:" + everyResult); //false
+
+	//some()方法只要有一项符合条件，结果返回true
+	var someResult = numbers.some(function(item, index, array) {
+		return (item > 2);
+	});
+
+	console.log("some:" + someResult); //true
+
+	//filter()方法把符合条件的选项过滤出来 ，返回数组
+	var filterResult = numbers.filter(function(item, index, array) {
+		return (item > 2);
+	});
+	console.log("数组的filter()方法，条件是>2");
+	console.log(filterResult);
+
+	//map()方法对数组每一项做相同运算，返回数组
+	var mapResult = numbers.map(function(item, index, array) {
+		return item * 2;
+	});
+	console.log("数组的map()方法，条件是 *2");
+	console.log(mapResult); //[2,4,6,8,10,8,6,4,2]
+
+	//forEach()方法用来迭代数组
+	numbers.forEach(function(item1, index1, array1) {
+		console.log("numbers[" + index1 + "]=" + item1);
+		if (index1 + 1 == array1.length) {
+			console.log("结束");
+		}
+	});
+
+	console.log("-----------reduce()和reduceRight()");
+	var values = [ 1, 2, 3, 4, 5 ];
+	console.log(values);
+	//函数参数prev, cur, index, array 分别表示前一个值，当前值，索引，数组对象
+	//reduce()方法开始的数组项是从左开始迭代
+	var sum = values.reduce(function(prev, cur, index, array) {
+		console.log("reduce() index:"+index);
+		return prev + cur;
+	});
+	console.log("sum:"+sum);
+	
+	var sum2 = values.reduceRight(function(prev, cur, index, array) {
+		console.log("reduceRight() index:"+index);
+		return prev + cur;
+	});
+	console.log("sum2:"+sum2);
+	
+</script>
+</html>

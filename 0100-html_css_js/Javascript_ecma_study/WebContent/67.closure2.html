@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>闭包问题</title>
+</head>
+<script type="text/javascript">
+var name = "The Window";
+
+var object = {
+　　name : "My Object",
+　　getNameFunc : function(){ //getNameFunc()方法 return 匿名函数A()形成闭包
+　　　　return function(){ //可以假设return 的匿名函数叫 A()
+　　　　　　return this.name;//这个this 是指向匿名函数 A()的实例，而不是实例object，找不到name属性。往上找，找到全局变量"The Window"
+　　　　};
+　　}
+
+};
+
+console.log(object.getNameFunc()());
+
+var object2 = {
+	　　　　name : "My Object",
+
+	　　　　getNameFunc : function(){
+	　　　　　　var that = this;//this指向object2
+	　　　　　　return function(){
+	　　　　　　　　return that.name;//把object2传递给闭包函数里
+	　　　　　　};
+
+	　　　　}
+
+	　　};
+	
+console.log(object2.getNameFunc()());
+
+var Object3=function(){
+	this.name="My Object";
+	this.getNameFunc=function(){
+	　　　　return function(){ 
+	　　　　　　return this.name;//和第一个例子一样
+	　　　　};
+	}
+}
+
+var object3=new Object3();
+console.log(object3.getNameFunc()());
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>自定义引用类型</title>
+</head>
+<script type="text/javascript">
+	var obj=new Object();//Object 后面括号可以省略
+	obj.name="小李";
+	obj.age=33;
+	obj.show=function(){
+		console.log("这是一个方法");//注意这里是方法，不是函数；方法从属于引用类型
+	}
+	console.log(obj);
+	console.log("下面调用对象的方法：obj.show()");
+	obj.show();
+	var empty={};	//没有任何属性的对象
+	var point={x:123,y:456,z:"abc"};//三个属性，不同数据类型,注意属性是用,分隔，然后一组属性的名字和值，用:分隔
+	var point2={x:point.x,y:point.y+1};//可以使用上面定义好的属性
+	var book={
+			name:"a book",
+			" main title":"javascript",//属性名字里面有空格，必须用字符串表示
+			'sub-title':"The Definitive Guide",//属性名字里面有连字符-，必须用字符串表示
+			"for":"all audiences",//属性名字里面用for，这个关键字或保留字，用引号
+			author:{  //可以内嵌对象
+				firstname:"David",
+				surname:"Flanagan",
+				age:40,
+				show:function(){
+					//this表示author对象
+					console.log("这是一个book.author的方法");
+					console.log("firstname:"+this.firstname+";surname:"+this.surname);
+				}
+			},
+			show:function(){			//属性里面也可以定义方法
+				console.log("这是一个book的方法");
+				//this表示book对象,方法变量作用域和之前函数是一样的，局部变量的作用域不能被外部变量访问
+				console.log("firstname:"+this.firstname+";surname:"+this.surname);
+			}
+	}
+	
+	console.log(empty);
+	console.log(point);
+	console.log(point2);
+	console.log(book);
+	console.log("下面调用对象book的属性");
+	console.log("book[\" main title\"]="+book[" main title"]);
+	console.log("book.name="+book.name);
+	console.log("book.author.firstname:"+book.author.firstname);
+	console.log("book.show()");
+	book.show();
+	console.log("book.author.show()");
+	book.author.show();
+	var pro="firstname";//把属性名赋值给变量
+	console.log("book.author[pro]:"+book.author[pro]);//通过:对象[变量]来访问属性
+	
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>正则表达式</title>
+</head>
+<script type="text/javascript">
+var p=/b.g/i;//测试用  var p=/b.g/;
+console.log("/b.g/i 可以匹配bg中间是1个字符的字符串,该字符串不管大小写");
+console.log("b.g 和 b1g 匹配:"+p.test("b1g"));
+console.log("b.g 和 bug 匹配:"+p.test("bug"));
+console.log("b.g 和 b g 匹配:"+p.test("b g"));
+console.log("b.g 和 b你g 匹配:"+p.test("b你g"));
+console.log("b.g 和 B你g 匹配:"+p.test("B你g"));
+console.log("b.g 和 buug 匹配:"+p.test("buug"));
+
+p=new RegExp("b.g","i");
+console.log("用RegExp对象来匹配 bg中间是1个字符的字符串,该字符串不管大小写");
+console.log("b.g 和 b1g 匹配:"+p.test("b1g"));
+console.log("b.g 和 bug 匹配:"+p.test("bug"));
+console.log("b.g 和 b g 匹配:"+p.test("b g"));
+console.log("b.g 和 b你g 匹配:"+p.test("b你g"));
+console.log("b.g 和 B你g 匹配:"+p.test("B你g"));
+console.log("b.g 和 buug 匹配:"+p.test("buug"));
+
+//js的正则匹配不是很严格，让人费解
+p=/\d{3}-\d{2}-\d{4}/;
+console.log("匹配格式如: 3个数字-2个数字-4个数字");
+console.log("123-00-1234 匹配结果:"+p.test("123-00-1234"));
+console.log("aaa-00-1234 匹配结果:"+p.test("aaa-00-1234"));
+console.log("1234-00-1234 匹配结果:"+p.test("1234-00-1234"));
+console.log("123456-00-123432 匹配结果:"+p.test("123456-00-123432"));
+console.log("123-000-1234 匹配结果:"+p.test("123-000-1234"));
+
+p=new RegExp("\\d{3}-\\d{2}-\\d{4}");
+console.log("匹配格式如: 3个数字-2个数字-4个数字");
+console.log("123-00-1234 匹配结果:"+p.test("123-00-1234"));
+console.log("aaa-00-1234 匹配结果:"+p.test("aaa-00-1234"));
+console.log("1234-00-1234 匹配结果:"+p.test("1234-00-1234"));
+
+/* 这是java的正则，和javascript比较
+Pattern p = Pattern.compile("\\d{3}-\\d{2}-\\d{4}");
+System.out.println("123-00-1234 匹配结果:"+p.matcher("123-00-1234").matches());
+System.out.println("aaa-00-1234 匹配结果:"+p.matcher("aaa-00-1234").matches());
+System.out.println("1234-00-1234 匹配结果:"+p.matcher("1234-00-1234").matches());
+System.out.println("123456-00-123432 匹配结果:"+p.matcher("123456-00-123432").matches());
+System.out.println("123-000-1234 匹配结果:"+p.matcher("123-000-1234").matches());
+*/
+</script>
+</html>

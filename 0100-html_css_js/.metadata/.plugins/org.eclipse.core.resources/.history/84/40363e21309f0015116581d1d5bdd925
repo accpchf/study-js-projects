@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>undefined</title>
+</head>
+<script type="text/javascript">
+	a=123;
+	console.log(a);
+	var a=123;
+	console.log(a);
+	// 声明变量x , y
+	var x, y = null;
+	
+	// 判断x的值是否为空
+	if (x == undefined) {
+		console.log('用==判断, x声明变量后默认值为undefined');
+	}
+	if (x == null) {
+		console.log('用==判断,x声明变量后默认值为null');
+	}
+	if (x === undefined) {
+		console.log('用===判断, x声明变量后默认值为undefined');
+	}
+	if (x === null) {
+		console.log('用===判断,x声明变量后默认值为null');
+	}
+	// 判断x（其值为undefined）是否与y（其值为null）相等
+	if (x == y) {
+		console.log("x（undefined）==y（null）");
+	}
+	if (x === y) {
+		console.log("x（undefined）===y（null）");
+	}
+	
+
+	// 测试一个并不存在的属性
+	if (String.xyz === undefined) {
+		console.log("不存在的属性值默认为undefined");
+	}
+	// 测试一个并不存在的变量，这里会引起语法错误了
+	if (xyz === undefined) {
+	console.log("不存在的变量xyz默认为undefined");
+	} 
+</script>
+</html>

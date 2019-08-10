@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> :nth-child </title>
+	<style type="text/css">
+		/* 定义对作为其父元素的奇数个子节点的li元素起作用的CSS样式 */
+		li:nth-child(odd) {
+			margin: 10px;
+			border: 2px dotted black;
+		}
+		/* 定义对作为其父元素的偶数个子节点的li元素起作用的CSS样式 */
+		li:nth-child(even) {
+			padding: 4px;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+<ul>
+	<li id="i1">皇家马德里队</li>
+	<li id="i2">巴塞罗那队</li>
+	<li id="i3">曼彻斯特联队</li>
+	<li id="i4">恒大淘宝队</li>
+	<li id="i5">利物浦队</li>
+	<li id="i6">国际米兰队</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>with语句</title>
+</head>
+
+<script type="text/javascript">
+//使用document对象
+document.write("您好 !");
+document.write("<br>这个文档的标题是 : \"" + document.title + "\".");
+document.write("<br>这个文档的 URL 是: " + document.URL);
+document.write("<br>现在您不用每次都写出 document 对象的前缀了 !");
+document.write("<br>");
+</script>
+
+<script type="text/javascript">
+	
+        with(document){
+              write("您好 !");
+              write("<br/>这个文档的标题是 : \"" + title + "\".");
+              write("<br/>这个文档的 URL 是: " + URL);
+              write("<br/>现在您不用每次都写出 document 对象的前缀了 !");
+              write("<br/>");
+           }
+</script>
+
+<script type="text/javascript">
+    //替代方案
+	var d=document;
+    d.write("您好 !");
+    d.write("<br/>这个文档的标题是 : \"" + d.title + "\".");
+    d.write("<br/>这个文档的 URL 是: " + d.URL);
+    d.write("<br/>现在您不用每次都写出 document 对象的前缀了 !");
+    d.write("<br/>");
+</script>
+<body>
+<form action="http://www.ks0100.com">
+	 姓名:<input type="text" name="name" value=""/><br/>
+	 年龄:<input type="text" name="age" value=""/><br/>
+	 地址:<input type="text" name="address" value=""/><br/>
+	 邮箱:<input type="text" name="email" value=""/><br/>
+	 <input type="button" value="重新输入" onclick="clearform();">
+</form>
+
+</body>  
+   <script type="text/javascript">
+        function clearform(){
+        	var f=document.forms[0];//声明变量f这样就简化了，不要用with
+        	//debugger;
+        	f.name.value="";
+        	f.age.value="";
+        	f.address.value="";
+        	f.email.value="";
+        }
+   </script>   
+</html>

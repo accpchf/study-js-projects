@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>vertical-align</title>
+<style type="text/css">
+img.top {
+	vertical-align: text-top
+}
+
+img.bottom {
+	vertical-align: text-bottom
+}
+div{
+	border:1px solid black;
+	width:250px;
+	height:200px;
+	margin-left:20px;
+}
+.span1{
+	border:1px solid black;
+	width:100px;
+	height:50px;
+	display:inline-block;
+	vertical-align:text-bottom;
+}
+.span2{
+	border:1px solid black;
+	width:100px;
+	height:50px;
+	display:inline-block;
+	vertical-align:text-top;
+}
+</style>
+</head>
+<body>
+	<p>
+		这是一幅<img class="top" border="0" src="img/eg_smile.gif" />位于段落中的图像。
+	</p>
+
+	<p>
+		这是一幅<img class="bottom" border="0" src="img/eg_smile.gif" />位于段落中的图像。
+	</p>
+	<h2>以下是一行元素:</h2>
+	这是一个<span style="vertical-align:super;">上标</span>;这是一个<span style="vertical-align:sub;">下标</span>;
+	<span class="span1">span1</span>
+	<span style="vertical-align:top;">vertical-align:top;</span>
+	<span class="span2">span2</span>
+	<span style="vertical-align:bottom;">vertical-align:bottom;</span>
+	<span>基线位置:xxxxxx</span>
+	<span style="vertical-align:-20px;">vertical-align:-20px;</span>
+	<span style="vertical-align:middle;">vertical-align:middle;</span>
+</body>
+</html>

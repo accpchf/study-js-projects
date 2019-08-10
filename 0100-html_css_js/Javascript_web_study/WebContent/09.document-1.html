@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>document对象-获取节点</title>
+</head>
+<body>
+<div>
+
+	<div id="div1">
+		<p  id="p1">第一个p</p>
+		<p class="class1" id="p2">第二个p</p>
+	</div>
+
+<input  type="button" name="b1" value="显示div1" onclick="show1('div1')"/>
+<input  type="button"  value="显示p1" onclick="show1('p1')"/>
+<input  type="button"  value="显示p2" onclick="show1('p2')"/>
+</div>
+
+<div>
+<input  type="button"  name="b1"   value="getElementsByName" onclick="show2()"/>
+<input  type="button"  name="b1"  value="getElementsByTagName" onclick="show3()"/>
+<input  type="button"  name="b1"  class="class1" value="getElementsByClassName" onclick="show4()"/>
+</div>
+</body>
+<script type="text/javascript">
+	function show1(id){
+		alert(document.getElementById(id).innerHTML);
+	}
+	
+	//div 和p标签没有name属性,不同标签的name可以重名
+	function show2(){
+		//根据name属性返回元素列表，下标顺序按照书写顺序从小到大
+		alert(document.getElementsByName("b1")[0].value);
+	}
+	
+	function show3(){
+		//根据标签名字，返回元素类型
+		alert(document.getElementsByTagName("p")[0].innerHTML);
+	}
+	function show4(){
+		//根据class属性返回元素列表，下标顺序按照书写顺序从小到大
+		alert(document.getElementsByClassName("class1")[0].innerHTML);
+	}
+</script>
+
+</html>

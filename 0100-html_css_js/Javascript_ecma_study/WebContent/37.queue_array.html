@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>数组queue方法</title>
+</head>
+<script type="text/javascript">
+var colors=[];//或var colors=new Array;
+console.log(colors);
+console.log("push red , green,black");
+var count=colors.push("red","green","black");//push()方法返回数组的长度
+console.log(colors);
+console.log(" count:"+count);
+var item=colors.shift();
+console.log("colors.shift():"+item);//用shift()方法实现队列的先进先出，弹出先进入的一项
+console.log("length:"+colors.length);
+console.log(colors);
+console.log("unshift yellow and orange"); 
+colors.unshift("yellow","orange");//从第一项开始插队，插入数据
+console.log(colors);
+</script>
+</html>

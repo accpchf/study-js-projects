@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> 图片相关标签 </title>
+</head>
+<body>
+图片一:<br/>
+<img src="./image/logo.jpg" alt="0100教育的Logo" /><br />
+<!-- 定义图片，指定高、宽 -->
+
+图片二:<br/>
+<img src="./image/logo.jpg" width="300" height="120"
+	alt="0100教育的Logo" /><br />
+	
+<!-- 定义图片，使用指定的图片映射，效果是在点击图片不同的部分，跳转到不同url -->
+图片三:<br/>
+<img src="./image/open_close.jpg" width="300" 
+	height="120" border="0" usemap="#test"
+	alt="0100教育的Logo" /><br />
+	
+<!-- 定义图片映射 -->
+<map name="test" id="test">
+	<!-- 为该图片映射定义2个区域，coords 是坐标，shape表示形状 -->
+	<area shape="circle"  coords="100,50,20" 
+		href="http://www.ks0100.com" alt="ks0100.com" />
+	<area shape="poly" coords="188,28,185,50,200,74,224,72,246,51"
+		href="http://www.163.com" alt="163.com" />
+</map>
+</body>
+</html>

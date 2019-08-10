@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript继承-组合使用原型链和借用构造函数</title>
+</head>
+<script type="text/javascript">
+function Animal(legs){
+	console.log("调用构造函数Animal");
+	this.type="动物";
+	this.legs=legs;
+	if(typeof this.show1 !="function"){
+		Animal.prototype.show1=function(){
+			console.log("show1 种类是:"+this.type+";有"+this.legs+"条腿");
+		}
+	}
+	this.show4=function(){
+		console.log("show4 种类是:"+this.type+";有"+this.legs+"条腿");
+	}
+}
+
+Animal.show2=function(){
+	console.log("show2 种类是:"+this.type+";有"+this.legs+"条腿");
+}
+
+function Cat(name,color){
+	this.name=name;
+	this.color=color;
+	//借用构造函数，来继承属性
+	Animal.call(this, 4);//第二次调用父类构造函数
+}
+//用原型链，来继承方法
+Cat.prototype=new Animal();//第一次调用父类构造函数
+
+Cat.prototype.constructor=Cat;//上面的代码，让constructor指向Animal是不对的，所以这里指向Cat
+Cat.prototype.getName=function(){
+	return this.name;
+}
+Cat.prototype.showCat=function(){
+	this.show1();//在子类可以继承父类的实例方法
+	this.show4();//在子类可以继承父类的实例方法
+	console.log("它是一个"+this.type);//在子类可以继承父类的属性
+	console.log("名字:"+this.name+";颜色:"+this.color);
+}
+
+var cat=new Cat("波斯猫","白色");
+cat.showCat();
+console.log(cat.type+";"+cat.legs);
+
+//组合式，缺点在于每次实例化子类，都会调用两次父类构造函数
+</script>
+</html>

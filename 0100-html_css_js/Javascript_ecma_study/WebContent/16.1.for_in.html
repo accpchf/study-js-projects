@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>for in 语句</title>
+</head>
+<script type="text/javascript">
+	// 定义数组
+	var a = ['hello' , 'javascript' , 'world'];
+	console.log(a);
+	// 遍历数组的每个元素
+	for (str in a)
+		console.log('索引' + str + '的值是:' + a[str]  );
+	
+	// 在页面输出静态文本
+	console.log("<h1>Navigator对象的全部属性如下：</h1>");
+	// 遍历navigator对象的所有属性
+	for (propName in navigator)
+	{
+		// 输出navigator对象的所有属性名，以及对应的属性值
+		console.log('属性' + propName + '的值是：' + navigator[propName]);
+	}
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> :child </title>
+	<style type="text/css">
+		/* 定义对作为其父元素的第一个子节点的li元素起作用的CSS样式 */
+		li:first-child {
+			border: 1px solid black;
+		}
+		/* 定义对作为其父元素的最后一个子节点的li元素起作用的CSS样式 */
+		li:last-child {
+			background-color: #aaa;
+		}
+		/* 定义对作为其父元素的第2个子节点的li元素起作用的CSS样式 */
+		li:nth-child(2){
+			color: #9932CC;
+		}
+		/* 定义对作为其父元素的倒数第2个子节点的li元素起作用的CSS样式 */
+		li:nth-last-child(2){
+			font-weight: bold; 
+		}
+		/* 定义对作为其父元素的唯一的子节点的span元素起作用的CSS样式 */
+		span:only-child {
+			font-size: 30pt;
+			font-family: "隶书";
+		}
+	</style>
+</head>
+<body>
+<ol>
+	<li>first-child:www.ks0100.com</li>
+	<li>nth-child(2):www.ks0100.com</li>
+	<li>www.ks0100.com</li>
+	<li>nth-last-child(2):www.ks0100.com</li>
+	<li>last-child:www.ks0100.com</li>
+</ol>
+<ul>
+	<li id="i1">first-child:www.ks0100.com</li>
+	<li id="i2">nth-child(2):www.ks0100.com</li>
+	<li id="i3">www.ks0100.com</li>
+	<li id="i4">www.ks0100.com</li>
+	<li id="i5">nth-last-child(2):www.ks0100.com</li>
+	<li><span id="s1">only-child:www.ks0100.com</span></li>
+</ul>
+<span>0100java培训</span>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>函数嵌套</title>
+</head>
+<script type="text/javascript">
+	// 定义全局函数
+	function outer() {
+		// 定义第一个局部函数
+		function inner1() {
+			console.log("局部函数11111");
+		}
+		// 定义第二个局部函数
+		function inner2() {
+			console.log("局部函数22222");
+		}
+		console.log("开始测试局部函数...");
+		// 在函数中调用第一个局部函数
+		inner1();
+		// 在函数中调用第二个局部函数
+		inner2();
+		console.log("结束测试局部函数...");
+	}
+	
+	console.log("调用outer之前...");
+	// 调用全局函数
+	outer();
+	console.log("调用outer之后...");
+	//inner1();//错误，内嵌函数/局部函数不能在全局函数外调用的
+</script>
+
+<script type="text/javascript">
+var r=123;
+var out=function( out_para){
+	
+	// 定义第一个局部函数
+	function inner1(in1_para) {
+		console.log("局部函数11111");
+		console.log("调用全局变量:"+r);
+		console.log("调用外部参数:"+out_para);
+		console.log("调用内部参数:"+in1_para);
+	}
+	// 定义第二个局部函数
+	var inner2=function(in2_para){
+		console.log("局部函数2222");
+		console.log("调用全局变量:"+r);
+		inner1(in2_para);
+		
+		var inner3 =function(in3_para){
+			console.log("局部函数333,它的宿主是函数inner2()");
+			console.log("调用全局变量:"+r);
+			console.log("调用外部参数out_para:"+out_para);
+			console.log("调用外部参数in2_para:"+in2_para);
+			console.log("调用内部参数:"+in3_para);
+		}
+		inner3("b111");
+		//console.log("调用第一个局部函数的参数:"+in1_para);//错误，未定义的变量in1_para，undefined不能转换为字符串，可见不能调用其他内部函数的参数
+	}
+	inner1("a111");
+	inner2("a222");
+	//inner3("c111");//错误，局部函数的调用，只能在局部函数宿主一层（父亲，而非父亲的祖辈），
+}
+
+out("out123");
+</script>
+</html>

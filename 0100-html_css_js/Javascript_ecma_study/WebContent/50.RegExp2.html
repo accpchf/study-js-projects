@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>正则表达式</title>
+</head>
+<script type="text/javascript">
+	console.log("理解全局模式标记g在 ");
+	var text = "cat, bat, sat, fat";
+	console.log(text);
+	var pattern1 = /.at/;
+	console.log("匹配/.at/");
+	var matches = pattern1.exec(text);//exec()方法返回数组
+	console.log("matches:"+matches);
+	console.log(matches.index); //0
+	console.log(matches[0]); //"cat"
+	console.log(pattern1.lastIndex);//0
+	console.log("再次匹配/.at/");
+	matches = pattern1.exec(text);//不设置全局标识g，再次匹配还是从头开始
+	console.log("matches:"+matches);
+	console.log(matches.index); //0
+	console.log(matches[0]); //"cat"
+	console.log(pattern1.lastIndex);//0
+
+	var pattern2 = /.at/g;
+	console.log("匹配/.at/g,设置全局标识");
+	var matches = pattern2.exec(text);
+	console.log("matches:"+matches);
+	console.log(matches.index); //0
+	console.log(matches[0]); //"cat"
+	console.log(pattern2.lastIndex);//3，lastIndex在各个浏览器有偏差
+	console.log("再次匹配/.at/g");//设置
+	matches = pattern2.exec(text);
+	console.log("matches:"+matches);
+	console.log(matches.index); //5，lastIndex在各个浏览器有偏差
+	console.log(matches[0]); //"bat"
+	console.log(pattern2.lastIndex);//8，lastIndex在各个浏览器有偏差
+	
+	/*
+	这是java的正则，和javascript比较
+	Pattern p = Pattern.compile("(\\d+,)(\\d+)");
+	String s = "123,456-34,345";
+	Matcher m = p.matcher(s);
+	while (m.find()) {
+		System.out.println("m.group():" + m.group()); // 打印本次匹配的组
+		System.out.println("m.group(1):" + m.group(1)); // 打印组，索引1
+		System.out.println("m.group(2):" + m.group(2)); // 打印组，索引2
+		System.out.println();
+	}
+	System.out.println("捕获个数:groupCount()=" + m.groupCount());
+	*/
+	console.log("123;456-34;345");
+	var pattern3 =/(\d+;)(\d+)/g;
+	console.log("正则式:"+pattern3);
+	var matches=pattern3.exec("123;456-34;345");
+	console.log("matches:"+matches);
+	console.log(matches[0]);
+	console.log(matches[1]);
+	console.log(matches[2]);
+	
+	matches=pattern3.exec("123;456-34;345");
+	console.log("matches:"+matches);
+	console.log(matches[0]);
+	console.log(matches[1]);
+	console.log(matches[2]);
+	
+	console.log("可以利用循环:");
+	var pattern4 =/(\d+;)(\d+)/g;
+	
+	var matches=pattern4.exec("123;456-34;345");
+	while(matches!=null){
+		console.log("matches:"+matches);
+		console.log(matches[0]);
+		console.log(matches[1]);
+		console.log(matches[2]);
+		matches=pattern4.exec("123;456-34;345");
+	}
+</script>
+</html>

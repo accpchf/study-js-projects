@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>document对象-选择符API</title>
+</head>
+<body>
+	<div id="div1">
+		<p id="p1" class="class1">我是第一个P</p>
+		<p id="p2" class="class2">我是第二个P</p>
+	</div>
+	<div id="div2">
+		<p id="p3" class="class3">我是第三个P</p>
+	</div>
+	<div>
+		<input type="button" value="show_body" onclick="show('body')" />
+		<input type="button" value="show_div1" onclick="show('#div1')" />
+		<input type="button" value="show_class1" onclick="show('.class1')" />
+		<!-- 用CSS选择符查询 -->
+		<input type="button" value="#div2 .class3" onclick="show('#div2 .class3')" />
+		<input type="button" value="show_all_p" onclick="show2()" />
+	</div>
+</body>
+<script type="text/javascript">
+function show(css){
+	var node=document.querySelector(css);
+	alert("innerHTML:"+node.innerHTML);
+}
+
+function show2(){
+	var nodeList=document.querySelectorAll('p');
+	for(i=0;i<nodeList.length;i++){
+		alert("innerHTML:"+nodeList[i].innerHTML);
+	}
+
+}
+</script>
+</html>

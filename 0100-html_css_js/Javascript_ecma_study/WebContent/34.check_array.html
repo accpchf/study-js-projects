@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>检测是否数组</title>
+</head>
+<script type="text/javascript">
+var obj=new Object;
+var array=new Array(1,"abc",true,null,obj,{});
+console.log("obj instanceof array:"+(array instanceof Array));
+console.log("obj instanceof array:"+(obj instanceof Array));
+console.log("Array.isArray(array):"+Array.isArray(array));
+console.log("Array.isArray(obj):"+Array.isArray(obj));
+
+var a=new Boolean();
+</script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> HTML5新增表单属性</title>
+</head>
+<body>
+学习form属性:<br/>
+<form id="addForm" action="add">
+	物品名：<input type="text" name="name"/>
+	<input type="submit" value="添加"/>
+</form>
+<!-- 指定form属性，标签可以放在form外面，很有用，可以动态指定form，向不同的form提交数据 -->
+物品描述：<textarea name="desc" form="addForm"></textarea>
+<hr/>
+学习formaction属性:<br/>
+<form method="post">
+	用户名：<input type="text" name="name"/><br/>
+	密码：<input type="password" name="name"/><br/>
+	<!-- formaction可以指定action提交，非常有用 -->
+	<input type="submit" value="注册" formaction="regist"/>
+	<input type="submit" value="修改" formaction="login"/>
+</form>
+<hr/>
+学习formmethod属性:<br/>
+<form method="post" action="login">
+	用户名：<input type="text" name="name"/><br/>
+	密码：<input type="password" name="password"/><br/>
+	<input type="submit" value="GET提交" formmethod="get"/>
+	<input type="submit" value="POST提交" formmethod="post"/>
+</form>
+<hr/>
+学习autofocus属性:<br/>
+<form method="post" action="login">
+	姓名：<input type="text" name="name"/><br/>
+	<!-- 标签自动获得焦点 -->
+	年龄：<input type="text" name="age" autofocus="autofocus"/><br/>
+	擅长:<select id="skills" name="skills" >
+		<option value="java">Java语言</option>
+		<option value="c">C语言</option>
+		<option value="ruby">Ruby语言</option>
+	</select><br />
+		male:<input id="gender" name="gender" type="radio" value="male" /> 
+		female<input id="gender2" name="gender" type="radio" value="female" /><br />
+		java：<input id="website" name="website" type="checkbox" value="java" /> 
+		c语言：<input id="website2" name="website" type="checkbox" value="c语言" /><br /> 
+</form>
+<hr/>
+学习placeholder属性:<br/>
+<form method="post">
+	
+	用户名：<input type="text" name="name" placeholder="请输入用户名"/><br/>
+	密码：<input type="password" name="name" placeholder="请输入密码"/><br/>
+	<input type="submit" value="注册" formaction="regist"/>
+	<input type="submit" value="修改" formaction="login"/>
+</form>
+<hr/>
+学习list属性:<br/>
+<form method="get" action="buy">
+	<!-- list属性用在输入框，给其加入下拉框功能 -->
+	<!-- autocomplete属性：是否显示下拉框，只有Opera浏览器支持 -->
+	请输入国家（中国，美国，日本）或者双击输入框：<input type="text" name="name" list="country" autocomplete="on"/><br/>
+	<input type="submit" value="去旅行"/>
+</form>
+<!-- <datalist>相当于隐藏的<select> -->
+<datalist id="country">
+	<option value="China">中国</option>
+	<option value="America">美国</option>
+	<option value="Japan">日本</option>
+</datalist>
+
+</body>
+</html>
+

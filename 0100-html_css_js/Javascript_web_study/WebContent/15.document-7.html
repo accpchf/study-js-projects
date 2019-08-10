@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>元素的内容</title>
+</head>
+<body>
+	<div id="div1">
+		<p id="p1">我是第一个P</p>
+		<p id="p2">
+			我是第<b>二</b>个P
+		</p>
+	</div>
+</body>
+<script type="text/javascript">
+	window.onload = function() {
+		 console.log(document.getElementById("p1").innerText); //注意火狐浏览器不支持innerText
+		 console.log(document.getElementById("p1").textContent); //基本都支持textContent
+		 console.log(document.getElementById("p2").textContent);
+		 console.log(document.getElementById("p2").innerHTML); //innerHTML与textContent的区别，就是textContent对HTML代码的输出方式Text不会输出HTML代码
+	}
+</script>
+</html>

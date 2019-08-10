@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<server port="8080">
+  <module context="Html5_study" name="Html5_study" path="E:/eclipse_mars_workspace/0100-html_css_js/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/Html5_study" type="static"/>
+</server>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Infinity</title>
+</head>
+<script type="text/javascript">
+	// 定义x为最大的数值
+	var x = 1.7976931348623157e308; 
+	// 再次增加x的值
+	x = x + 1e292;
+	console.log("x="+x);
+	console.log("Infinity+1000="+(x+1000));
+	// 定义x为最小的数值
+	var y = -1.7976931348623157e308; 
+	// 再次减少x的值
+	y = y -1e292;
+	console.log("y="+y);
+	console.log("-Infinity-1000="+(y-1000));
+	console.log("x+x="+(x+x));
+	console.log("y+y="+(y+y));
+	console.log("x+y="+(x+y));//只有正负Infinity一起运算变成NaN
+	console.log("Infinity==-Infinity:"+(x==y));
+</script>
+
+<script type="text/javascript">
+	// 使用显式定义变量的方式定义变量a
+	var a = 3e30000;
+	// 使用显式定义变量的方式定义变量b
+	var b = 5e20000;
+	//js系统函数，判断是不是Infinity
+	console.log("a="+a);
+	console.log("a="+a);
+	console.log("b="+b);
+	console.log("a==b:"+(a == b));
+	var c = -3e30000;
+	var d = -5e20000;
+	console.log("c="+c);
+	console.log("d="+d);
+	console.log("c==d:"+(c == d));
+</script>
+</html>

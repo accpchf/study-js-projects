@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>事件流实例</title>
+</head>
+<body>
+<div id="div1">
+	这是div1，点击
+	<div id="div2">
+		这是div2，点击
+		<p id="_p">这是p，点击</p>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+	var div1=document.getElementById("div1");
+	var div2=document.getElementById("div2");
+	var p=document.getElementById("_p");
+	
+	function click_func(e){
+		console.log("currentTarget.id:"+e.currentTarget.id);
+	}
+	
+	//把参数false改为true，观察冒泡事件流和捕获事件流有什么区别
+	//也可以把各元素的事件注册顺序，随意改动，观察执行结果
+	div2.addEventListener("click", click_func, false);
+	div1.addEventListener("click", click_func, false);
+	p.addEventListener("click", click_func, false);
+	
+	//以下为冒泡事件
+	//div2.onclick=click_func;
+	//div1.onclick=click_func;
+	//p.onclick=click_func;
+</script>
+</html>

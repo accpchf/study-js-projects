@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>背景相关属性</title>
+	<style type="text/css">
+	.outer{
+		width: 200px;
+		border:1px dotted #000;
+	}
+	.inner{
+		border:1px solid #000;
+	}
+	/* 为div元素增加边框 */
+	div.common{
+		border:1px solid #000;
+		height: 50px;
+		width: 200px;
+	}
+	</style>
+</head>
+<body>
+背景是应用在border以内的区域，不包括margin：
+<div class="outer">
+	<div class="inner" style="margin:10px;background-color:#aaa;">测试文字</div>
+</div>
+<br/>
+灰色背景 <br/>
+background-color:#aaa 
+<div class="common" style="background-color:#aaa;">测试文字</div>
+ 以默认样式指定背景图片，将会在横向、纵向上平铺 <br/>
+background-image:url('img/wjc.gif')
+<div class="common" style="background-image:url('img/wjc.gif');">测试文字</div>
+不平铺的背景图片<br/>
+background-image:url('img/wjc.gif');background-repeat: no-repeat
+<div class="common" style="background-image:url('img/wjc.gif');background-repeat:no-repeat;">测试文字</div>
+仅横向平铺的背景图片<br/>
+background-image:url('img/wjc.gif');background-repeat: repeat-x
+<div class="common" style="background-image:url('img/wjc.gif');background-repeat:repeat-x;">测试文字</div>
+ 不平铺的背景图片，并指定背景图片的位置 <br/>
+background-image:url('img/wjc.gif');background-repeat:no-repeat;background-position: 35% 80%;
+<div class="common" style="background-image:url('img/wjc.gif');background-repeat:no-repeat;background-position:35% 80%;">测试文字</div>
+不平铺的背景图片，并指定背景图片的位置  <br/>
+background-image:url('img/wjc.gif');background-repeat:no-repeat;background-position: 30px 12px;
+<div class="common" style="background-image:url('img/wjc.gif');background-repeat:no-repeat;background-position:30px 8px;">测试文字</div>
+ 不平铺的背景图片，并指定背景图片的位置<br/>
+background-image:url('img/wjc.gif');background-repeat:no-repeat;background-position: center bottom;
+<div class="common" style="background-image:url('img/wjc.gif');background-repeat:no-repeat;background-position:center bottom;">测试文字</div>
+用background复合属性定义<br/>
+background:#ff0000 url('img/wjc.gif') no-repeat center bottom
+<div class="common" style="background:#ff0000 url('img/wjc.gif') no-repeat center bottom;">测试文字</div>
+</body>
+</html>

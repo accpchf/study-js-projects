@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>打开浏览器窗口</title>
+</head>
+<body>
+<div>
+	<!--onclick表示点击的时候，运行的js函数  -->
+	<input type="button" value="打开百度" onclick="openWindow('http://www.baidu.com')"/>
+</div>
+<div>
+	<input type="button" value="打开自定义html" onclick="openWindow('example/1.html')"/>
+</div>
+<div>
+	<input type="button" value="本窗口打开" onclick="openWindowSelf('example/1.html')"/>
+</div>
+<div>
+	<input type="button" value="打开新窗口" onclick="openWindowBlank('example/1.html')"/>
+</div>
+<div>
+	<input type="button" value="打开新窗口，定义大小和位置" onclick="openWindow2('example/1.html')"/>
+</div>
+<div>
+	<input type="button" value="关闭" onclick="closeWindow();"/>
+</div>
+</body>
+<script type="text/javascript">
+function openWindow(url){
+	window.open(url);//默认就是_blank方式
+}
+function openWindowSelf(url){
+	window.open(url,"_self");//在本窗口打开，替换原来内容
+}
+function openWindowBlank(url){
+	window.open(url,"_blank");//打开新窗口
+}
+var win=null;
+function openWindow2(url){
+	win=window.open(url,"_blank","left=200,top=200,height=100,width=100,status=yes,toolbar=yes, menubar=no,location=no");//打开新窗口
+}
+function closeWindow(){
+	if(win!=null&&win.opener===window){ //opener属性保存着打开它的原始窗口对象
+		win.close();
+		win=null;
+	}else{
+		alert("没有窗口可以关闭");
+	}
+}
+
+</script>
+</html>

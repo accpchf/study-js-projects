@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript继承-借用构造函数</title>
+</head>
+<script type="text/javascript">
+function Animal(legs){
+	this.type="动物";
+	this.legs=legs;
+	if(typeof this.show1 !="function"){
+		Animal.prototype.show1=function(){
+			console.log("show1 种类是:"+this.type+";有"+this.legs+"条腿");
+		}
+	}
+	this.show4=function(){
+		console.log("show4 种类是:"+this.type+";有"+this.legs+"条腿");
+	}
+	var show5=function(){
+		console.log("show5 种类是:"+this.type+";有"+this.legs+"条腿");
+	}
+}
+/*
+ * 方法有4种
+   1.原型方法如show1()，show3()
+   2.函数类型方法show2()，不同于原型方法，原型方法定义在原型对象里面，可以被实例访问；show2定义在函数里面。不能被实例访问，只能被函数访问
+   3.实例方法,show4(),this修饰的，会被实例复制成不同拷贝。
+   4.私有方法或局部方法，show5(),外部或子类是访问不了的
+ */
+Animal.show2=function(){
+	console.log("show2 种类是:"+this.type+";有"+this.legs+"条腿");
+}
+Animal.prototype={
+		constructor: Animal, //省略Object.defineProperty 来设置constructor
+		show3:function(){
+			console.log("show3 种类是:"+this.type+";有"+this.legs+"条腿");
+		}		
+}
+
+function Cat(name,color){
+	this.name=name;
+	this.color=color;
+	//借用构造函数，除了call()，还可以用apply()，可以用来向父类传递参数了。
+	Animal.call(this, 4);//父类构造函数.call(子类,参数)，因为this.Animal(4)不成立的。
+	Animal.prototype.show1.call(this);//调用父类方法
+	Animal.show2.call(this);//调用父类方法 ，show2是定义在实例里面的，不是定义在原型里面的
+	Animal.prototype.show3.call(this);//调用父类方法
+	this.show4();
+}
+Cat.prototype={
+		constructor: Cat,
+		showCat:function(){
+			console.log("---showCat方法");
+			//this.show1();//错误，不能继承原型方法
+			Animal.show2.call(this);
+			//this.show3();//错误，不能继承原型方法
+			this.show4();
+			console.log("type:"+this.type+";legs:"+this.legs);//可以继承父类
+			console.log("名字:"+this.name+";颜色:"+this.color);
+		}
+}
+
+var a=new Animal(2);
+Animal.show2();//show2定义在函数里面。不能被实例访问，只能被函数访问
+Animal.show2.call(a);//把对象传过去
+//a.show2();//错误不能被实例访问
+console.log("--------")
+
+var cat=new Cat("波斯猫","白色");
+cat.showCat();
+console.log(cat.type+";"+cat.legs);//属性可以被实例继承使用
+
+//cat.show1();//错误，不能继承原型方法
+//cat.show2();//错误，不能继承类型方法
+//cat.show3();//错误，不能继承原型方法
+cat.show4();//可以继承，实例方法
+
+//总结，‘借用构造函数’只能继承实例方法和实例属性，不能继承原型方法和原型属性。
+
+</script>
+</html>

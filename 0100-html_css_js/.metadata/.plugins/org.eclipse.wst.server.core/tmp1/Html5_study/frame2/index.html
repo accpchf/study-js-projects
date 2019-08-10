@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>首页</title>
+</head>
+<!-- 以下是嵌套的 frameset ，可以做成嵌套框架-->
+<frameset rows="10%,80%,10%">
+	<frame src="banner.html">
+	<frameset cols="20%,*">
+		<!--scrolling表示滚动条，可以缩小浏览器窗口试验  -->
+		<frame src="menu.html" scrolling="no" >
+		<!-- 能达到导航的效果，主要看 name，这里自定义了值main,再看menu的target，必须和这里对应 -->
+		<frame src="page1.html" scrolling="auto" name="main">
+	</frameset>
+	<frame src="footer.html">
+	<noframes>
+		<body>
+			<p>浏览器不支持frameset</p>
+		</body>
+	</noframes>
+</frameset>
+</html>

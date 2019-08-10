@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>函数的callee，caller</title>
+</head>
+<script type="text/javascript">
+	// 返回正被执行的 Function 对象
+	console.log("-----arguments.callee 返回正被执行的 Function 对象");
+	function calleeDemo() {
+		console.log(arguments.callee);
+	}
+
+	calleeDemo();
+	calleeDemo(1);
+
+	//用于验证参数
+	console.log("---用于验证参数");
+	function calleeLengthDemo(arg1, arg2) {
+		console.log("------开始验证:");
+		if (arguments.length == arguments.callee.length) {
+			console.log("验证形参和实参长度正确！");
+			return;
+		} else {
+			console.log("实参个数：" + arguments.length);
+			console.log("形参个数：" + calleeLengthDemo.length);//函数名.length 表示形参
+			console.log("形参个数： " + arguments.callee.length);
+		}
+	}
+
+	calleeLengthDemo(1);
+	calleeLengthDemo(1, "2");
+
+	//递归计算
+	console.log("---用于递归计算");
+	var sum = function(n) {
+		if (n <= 0)
+			return 1;
+		else
+			return n + arguments.callee(n - 1);
+	}
+
+	//比较上面用callee的递归
+	var sum2 = function(n) {
+		if (n <= 0)
+			return 1;
+		else
+			return n + sum2(n - 1);
+	}
+	console.log("sum(10):" + sum(10));
+	console.log("sum2(10):" + sum2(10));
+
+	var sum3 = sum;
+	sum = function() {
+	};//修改sum()函数，递归没问题
+	console.log("1. sum3(10):" + sum3(10));
+
+	sum3 = sum2;
+	sum2 = function() {
+	};//修改sum2()函数，递归出问题
+	console.log("2. sum3(10):" + sum3(10));
+
+	console.log("---caller 返回一个对函数的引用，该函数调用了当前函数。");
+	//对于函数来说，caller属性只有在函数执行时才有定义。如果函数是由顶层调用的，那么 caller包含的就是 null 。如果在字符串上下文中使用 caller属性(即被其他函数调用)，那么结果和 functionName.toString 一样，也就是说，显示的是函数的反编译文本,
+	function callerDemo() {
+		if (callerDemo.caller) {//即被其他函数调用
+			console.log("callerDemo()函数被其他函数调用,返回调用函数代码:");
+			var a = callerDemo.caller.toString();
+			console.log(a);
+		} else { //函数是由顶层调用的
+			console.log("callerDemo()函数是由顶层调用的");
+		}
+	}
+
+	function handleCaller() {
+		var i = 1;
+		callerDemo();
+	}
+	handleCaller();
+	callerDemo();
+
+	console.log("---caller 和 callee 合用");
+	function outer() {
+		inner();
+	}
+
+	function inner() {
+		console.log(inner.caller);
+	}
+	outer();
+	
+    
+    function inner2(){
+    	console.log(arguments.callee.caller);
+    }
+    
+    outer();
+</script>
+</html>

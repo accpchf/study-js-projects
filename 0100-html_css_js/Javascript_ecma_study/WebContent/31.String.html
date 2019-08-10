@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>String对象</title>
+</head>
+<script type="text/javascript">
+var num=10;
+console.log("num.toString():"+num.toString());
+console.log("num.toString(2):"+num.toString(2));
+console.log("num.toString(8):"+num.toString(8));
+console.log("num.toString(10):"+num.toString(10));
+console.log("num.toString(16):"+num.toString(16));
+var _null=null;
+//console.log("_null.toString():"+_null.toString());//null 值不能toString()，因为引用对象是空，类似空指针错误
+var _undefined;
+//console.log("_undefined.toString():"+_undefined.toString());//undefined 值不能toString()，因为值未定义，类似空指针错误
+//为了避免toString(),“空指针”错误,可以用js的全局函数String()
+console.log("为了避免toString(),“空指针”错误,可以用js的全局函数String()");
+console.log(String(_null));
+console.log(String(_undefined));
+
+console.log("---------toString()和valueOf()区别");
+var falseObj=new Boolean(false);
+console.log("falseObj.toString():"+falseObj.toString());
+console.log("falseObj.valueOf():"+falseObj.valueOf());
+console.log("typeof falseObj.toString():"+ typeof falseObj.toString());
+console.log("typeof falseObj.valueOf():"+ typeof falseObj.valueOf());
+
+console.log("字符方法charAt()，charCodeAt()");
+var string1="hello";
+console.log(string1.charAt(1));//e
+console.log(string1.charCodeAt(1));//e的编码是十进制编码是101，十六进制就是65
+console.log(string1[1]);
+
+console.log("--------concat()方法");
+var result=string1.concat(" world");//concat方法不改变字符串string1
+console.log("string1:"+string1);
+console.log("result:"+result);
+var result2=string1.concat(" world","!");
+console.log("result2:"+result2);
+
+var string2="hello world";
+console.log("---------slice()、substring()、substr() 方法");
+console.log("string2:"+string2);
+console.log("string2.slice(3):"+string2.slice(3));
+console.log("string2.substring(3):"+string2.substring(3));
+console.log("string2.substr(3):"+string2.substr(3));
+console.log("string2.slice(3,7):"+string2.slice(3,7));//7表示第7个字符
+console.log("string2.substring(3,7):"+string2.substring(3,7));//7表示第7个字符
+console.log("string2.substr(3,7):"+string2.substr(3,7));//7表示共截取7个字符
+
+console.log("string2.slice(-3):"+string2.slice(-3));
+console.log("string2.substring(-3):"+string2.substring(-3));
+console.log("string2.substr(-3):"+string2.substr(-3));
+console.log("string2.slice(3,-4):"+string2.slice(3,-4));
+console.log("string2.substring(3,-4):"+string2.substring(3,-4));//第二个参数是负数，substring会变0，即substring(3,0)，又变成substring(0,3)
+console.log("string2.substr(3,-4):"+string2.substr(3,-4));//第二个参数<=0，为空字符串
+
+console.log("---------indexof()、lastIndexof()方法");
+console.log("string2.indexOf(\"o\"):"+string2.indexOf("o"));
+console.log("string2.indexOf(\"o\",6):"+string2.indexOf("o",6));//从索引6开始搜索o，第二个o的索引为7
+console.log("string2.lastIndexOf(\"o\"):"+string2.lastIndexOf("o"));
+console.log("string2.lastIndexOf(\"o\",6):"+string2.lastIndexOf("o",6));//从右往左搜索
+
+var string3="bcd";
+console.log("string3.localeCompare(\"abc\"):"+string3.localeCompare("abc"));//按照字符串字符顺序比较
+console.log("string3.localeCompare(\"bcd\"):"+string3.localeCompare("bcd"));
+console.log("string3.localeCompare(\"cdc\"):"+string3.localeCompare("cdc"));
+
+</script>
+</html>

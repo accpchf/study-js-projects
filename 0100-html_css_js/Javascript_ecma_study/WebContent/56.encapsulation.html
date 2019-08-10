@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript封装</title>
+</head>
+<script type="text/javascript">
+/*
+ *
+ 实现封装注意三点:
+	 1.私有变量和私有方法不对外暴露，
+	 2.类型的公有方法可以访问私有方法和私有属性
+	 3.公有方法应该只有一份实例，也就是所有对象的公有方法都引用同一处内存地址
+ */
+ console.log("------定义一个错误的封装类型");
+ /*
+ 用prototype  实现javascript的封装，有几点障碍
+ 1. 用this修饰的属性，可以看作是"公有变量"，达不到封装性，只能用函数局部变量来实现私有变量，函数内嵌函数实现私有方法
+ 2. 私有变量传递不到prototype对象里面去
+ */
+var Person_bad=function(name,age){
+	var _name,_age;//用_开头命名的函数内部变量，作为私有变量
+	_name=name;
+	_age=age;
+}
+
+Person_bad.prototype={
+	constructor:Person_bad,
+	getName:function(){
+		return _name;//不可以访问构造函数的局部变量 _name
+	},
+	setName:function(name){
+		_name=name; 
+	},
+	sayName:function(){
+		console.log("名字:" + _name);
+	}
+}
+//打开注释出现错误
+//var p=new Person_bad("小王",23);
+//p.sayName();
+</script>
+
+<script type="text/javascript">
+
+console.log("-----定义不严格的封装类型");
+var Person_no=function(name){
+	this.setName(name);
+}
+
+Person_no.prototype={
+	constructor:Person_no,
+	getName:function(){
+		return this.name;//不可以访问构造函数的局部变量 _name
+	},
+	setName:function(name){
+		this.name=name; 
+	},
+	sayName:function(){
+		console.log("名字:" + this.name);
+	}
+}
+var p=new Person_no("小张");
+p.sayName();
+p.setName("小李");
+console.log("p.getName():"+p.getName());
+console.log("p.name:"+p.name);//能够访问，说明name并不是私有，Person_no类型不是严格封装类型
+p.name="小王";
+p.sayName();
+</script>
+
+<script type="text/javascript">
+console.log("-----用构造函数来封装");
+var Person=function(name,age){
+	var _name,_age;//用_开头命名的函数内部变量，作为私有变量
+	_name=name;
+	_age=age;
+	this.getName=function(){
+		return _name;
+	}
+	this.setName=function(name){
+		_name=name;
+	}
+	this.getAge=function(){
+		return _age;
+	}
+	this.setAge=function(age){
+		_age=age;
+	}
+	this.say=function(){
+		_say();
+		console.log("名字:" + _name + ";年龄:" + _age);
+	}
+	var _say =function(){
+		console.log("这是一个私有方法");
+	};
+}
+var p1=new Person("小明",32);
+p1.say();
+p1.setName("小明2");
+p1.setAge(30);
+p1.say();
+
+var p2=new Person("小华",30);
+console.log("p1.say ===p2.say:"+(p1.say ===p2.say));//false,说明每次调用构造函数，方法实例都不同，这会浪费内存
+
+</script>
+<script type="text/javascript">
+
+console.log("-----定义一个严格的封装类型，属性不用this修饰，单纯用私有变量");
+var Person=function(name,age){
+	var _name,_age;//用_开头命名的函数内部变量，作为私有变量
+	_name=name;
+	_age=age;
+	if(typeof this.getName !="function"){
+		Person.prototype.getName=function(){
+			return _name;
+		}
+	}
+	if(typeof this.setName !="function"){
+		Person.prototype.setName=function(name){
+			 _name=name;
+		}
+	}
+	if(typeof this.getAge !="function"){
+		Person.prototype.getAge=function(){
+			return _age;
+		}
+	}
+	
+	if(typeof this.setAge !="function"){
+		Person.prototype.setAge=function(age){
+			_age=age;
+		}
+	}
+	
+	var _say =function(){
+		console.log("这是一个私有方法");
+	};
+	
+	if(typeof this.say !="function"){
+		Person.prototype.say=function(){
+			//在公有方法里面调私有方法
+			_say();
+			console.log("名字:" + _name + ";年龄:" + _age);
+		}
+	}
+}
+
+var p1=new Person("小明",32);
+p1.say();
+p1.setName("小明2");
+p1.setAge(30);
+p1.say();
+console.log(p1._name);
+console.log(p1.getName());
+var p2=new Person("小华",30);
+console.log("p1.say ===p2.say:"+(p1.say ===p2.say));//true,说明方法实例只有一个，不浪费内存
+</script>
+</html>

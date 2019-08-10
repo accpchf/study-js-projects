@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+var age=29;
+function sayAge(){
+     console.log("sayAge() age:"+age);
+     console.log("sayAge() this.age:"+this.age);
+     console.log("sayAge() window.age:"+window.age);
+}
+console.log("this.age:"+this.age);
+console.log("window.age:"+window.age);
+sayAge();
+console.log("this.sayAge()------");
+this.sayAge();
+console.log("window.sayAge()------");
+window.sayAge();
+
+</script>
+</html>

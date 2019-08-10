@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>注意js区分大小写</title>
+<style type="text/css">
+	div{
+		/* CSS大小写不区分*/
+		margin:10px;background-Color:red;
+		WIDTH:200px;
+		height:100px
+	}
+</style>
+</head>
+<body>
+	<input type="button" value="按钮1" id="btn1" />
+	<input type="button" value="按钮2" id="btn2" onCliCk="alert('按钮2')" />
+	<input type="button" value="变黑" id="btn3"  />
+	<input type="button" value="变红" id="btn4"  />
+	<input type="button" value="测试" id="btn5"  />
+	<div id="div1"></div>
+</body>
+
+<script type="text/javascript">
+		//var b1 声明变量，js里面声明变量都用var类型
+		/*本script内的代码，必须在btn1 元素之后,
+		  因为javascript是解释型语言，从上到下逐行解释,
+		  btn1元素还没有生成，自然不能调用document.getElementById("btn1");
+		*/
+		var b1 = document.getElementById("btn1");//获取id=btn1的html元素
+		//onclick 是点击事件，是button的事件属性不能写成onClick，一律小写，但是html不区分大小写
+		b1.onclick = function() {
+			alert('按钮1');
+			console.log('按钮1');
+		};
+		
+		var b3 = document.getElementById("btn3");
+		b3.onclick = function() {
+			document.getElementById("div1").style.backgroundColor="black";//css属性名字，参考css手册
+			//document.getElementById("div1").style.backgroundcolor="black";//backgroundcolor大小写错误，函数失效
+		};
+		
+		var b4 = document.getElementById("btn4");
+		b4.onclick = function() {
+			document.getElementById("div1").style.backgroundColor='red';
+		};
+		
+		var b5 = document.getElementById("btn5");
+		b5.onclick = function() {
+			func1();
+			func2();
+			func3();
+			func4();
+		};
+		//定义一个函数
+		function func1(){
+			 console.log("---------func1():");
+		     var a=4;
+		     var b=4;
+		     var c=4;var d=4;
+			 console.log("a="+a+";b="+b+";c="+c+";d="+d);
+		}
+		function func2(){
+			 console.log("---------func2():")
+			 var a=4
+		     var b=4
+		    // var c=4 var d=4    //错误
+		    var c=4; var d=4 
+		     console.log("a="+a+";b="+b+";c="+c+";d="+d);
+		}
+		
+		function func3(){
+			 console.log("---------func3():")
+			 //以下代码就是 var a;a=4;
+			 var a
+		     a
+		     =
+		     4
+		     console.log("a="+a)
+		}
+		function func4(){
+			 console.log("---------func4():")
+			 var a=0,b=0
+			 console.log("a="+a+";b="+b)
+			 a
+		     ++
+		     b
+		     /*不是 a++;b
+		                    而是a;++b
+		                 所以不用;容易得到意想不到的意思，强烈建议用;分隔
+		     */
+		     console.log("a="+a+";b="+b)
+		}
+</script>
+</html>

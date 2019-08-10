@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>创建javascript“类”的最常见方式</title>
+</head>
+<script type="text/javascript">
+function Person(name,age){
+	this.name=name;
+	this.age=age;
+	this.friends=[];
+}
+Person.prototype={
+	constructor:Person,
+	say:function(){
+		console.log("名字:" + this.name + ";年龄:" + this.age);
+	},
+	showFriends:function(){
+		var f_array=this.friends;
+		console.log(this.name+"有"+f_array.length+"个朋友:");
+		for(i=0;i<f_array.length;i++){
+			console.log(f_array[i]);
+		}
+	}
+}
+
+var p1=new Person("小明",12);
+p1.friends.push("小王","小华","小芬");
+p1.say();
+p1.showFriends();
+var p2=new Person("小李",22);
+p2.say();
+p2.showFriends();
+
+console.log("比较两个对象的属性:");
+console.log("p1.name===p2.name:"+(p1.name===p2.name) );
+console.log("p1.age===p2.age:"+(p1.age===p2.age) );
+console.log("p1.friends===p2.friends:"+(p1.friends===p2.friends) );
+console.log("比较两个对象的方法:");
+console.log("p1.say===p2.say:"+(p1.say===p2.say) );
+console.log("p1.showFriends===p2.showFriends:"+(p1.showFriends===p2.showFriends));
+
+</script>
+<script type="text/javascript">
+console.log("-----也有人习惯把属性和方法都定义在一个构造函数里面:");
+function Person2(name,age){
+	this.name=name;
+	this.age=age;
+	this.friends=[];
+	
+	//利用动态原型模式来创建方法， 把方法写在构造函数里面
+	if(typeof this.say !="function"){//用if判断 使构造函数 只定义一次方法
+		Person2.prototype.say=function(){
+			console.log("名字:" + this.name + ";年龄:" + this.age);
+		}
+	}
+	
+	if(typeof this.showFriends !="function"){
+		Person2.prototype.showFriends=function(){
+			var f_array=this.friends;
+			console.log(this.name+"有"+f_array.length+"个朋友:");
+			for(i=0;i<f_array.length;i++){
+				console.log(f_array[i]);
+			}
+		}
+	}
+	
+}
+
+var p1=new Person2("小明",12);
+p1.friends.push("小王","小华","小芬");
+p1.say();
+p1.showFriends();
+var p2=new Person2("小李",22);
+p2.say();
+p2.showFriends();
+
+console.log("比较两个对象的属性:");
+console.log("p1.name===p2.name:"+(p1.name===p2.name) );
+console.log("p1.age===p2.age:"+(p1.age===p2.age) );
+console.log("p1.friends===p2.friends:"+(p1.friends===p2.friends) );
+console.log("比较两个对象的方法:");
+console.log("p1.say===p2.say:"+(p1.say===p2.say) );
+console.log("p1.showFriends===p2.showFriends:"+(p1.showFriends===p2.showFriends));
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> 表格相关属性 </title>
+	<style type="text/css">
+	table {
+		table-layout: fixed;
+		border-collapse:collapse;
+		border: 1px solid black;
+	}
+	td {
+		background-color:#ccc;
+		border: 1px solid black;
+	}
+	</style>
+</head>
+<body>
+表格的宽度将由两个col元素出来
+<table>
+	<!-- 表格的宽度将由如下两个col元素计算出来 -->
+	<col style="width:240px"/>
+	<col style="width:80px"/>
+	<tr>
+		<td>曼彻斯特联队</td>
+		<td>巴塞罗那队</td>
+	</tr>
+	<tr>
+		<td>利物浦队</td>
+		<td>国际米兰队</td>
+	</tr>
+</table>
+表格的宽度将由如下第一行的单元格的宽度计算出来
+<table>
+	<tr>
+		<!-- 表格的宽度将由如下第一行的单元格的宽度计算出来 -->
+		<td style="width:80px">曼彻斯特联队</td>
+		<td style="width:300px">巴塞罗那队</td>
+	</tr>
+	<tr>
+		<td>利物浦队</td>
+		<td>国际米兰队</td>
+	</tr>
+</table>
+每列将会平均分配该表格的宽度
+<!-- 每列将会平均分配该表格的宽度 -->
+<table style="width:300px">
+	<tr>
+		<td>曼彻斯特联队</td>
+		<td>巴塞罗那队</td>
+	</tr>
+	<tr>
+		<td>利物浦队</td>
+		<td>国际米兰队</td>
+	</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>document对象-节点的操作方法</title>
+</head>
+<body>
+	<div id="div1">
+		<p id="p1">我是第一个P</p>
+		<p id="p2">我是第二个P</p>
+	</div>
+	<div>
+		<input type="button" value="加一行" onclick="add()" />
+		<input type="button" value="加一行文字" onclick="addText()" />
+	</div>
+	<div>
+		<input type="button" value="删除一行" onclick="del()" />
+	</div>
+</body>
+<script type="text/javascript">
+	var _div = document.getElementById("div1");
+	
+	function add(){
+		 var pNode = document.createElement("p");
+		 pNode.textContent = "我是新建的P";
+		 _div.appendChild(pNode);
+	}
+	function addText(){
+		 var textNode = document.createTextNode("<p>我是一个javascript新建的节点</p>");
+		 _div.appendChild(textNode);
+	}
+	function del(){
+		var node=_div.lastElementChild;
+		_div.removeChild(node);
+	}
+</script>
+</html>

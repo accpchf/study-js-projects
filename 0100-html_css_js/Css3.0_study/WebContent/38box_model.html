@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>框模型/盒模型 Box Model</title>
+<style type="text/css">
+	
+	/* 
+	    如果不设置最外层元素的height和width，那么这个元素实际的高和宽由内部元素来计算的
+	  这里表示1px宽度的边框，边框的风格是实线solid，黑色         
+	 */
+	.outer{
+		border: 1px solid black;
+	}
+	
+	.inner1{
+  		width: 68px;
+  		height: 30px;
+		border: 1px solid red;
+  		margin: 10px;
+  		padding: 5px;
+	}
+	/* 如果要调整，文字的位置要修改哪个属性？*/
+	.inner2{
+  		width: 68px;
+  		height: 30px;
+		border: 1px solid red;
+  		padding: 5px;
+	}
+</style>
+</head>
+<body>
+<div class="outer">
+	<div class="inner1" >测试1</div>
+</div>
+<br/>
+<div class="outer">
+<div class="inner2" >测试2</div>
+</div>
+
+<!-- p标签嵌套是不合规范的 -->
+<p class="outer">
+	<p class="inner1" >测试3</p>
+</p>
+
+<span class="outer">
+	<span class="inner1"> 测试3</span>
+</span>
+</body>
+</html>

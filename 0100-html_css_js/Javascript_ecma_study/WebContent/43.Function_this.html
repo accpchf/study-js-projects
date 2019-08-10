@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>函数的this</title>
+</head>
+<script type="text/javascript">
+
+console.log("-----在函数里面调用this，表示this代表全局对象，this.变量名  表示全局变量");
+
+function test1(){
+  console.log("-----test1()函数");
+  var x=0;	
+  console.log("test1() this.x:"+this.x);
+　  this.x = 1;//这里的this.x 是全局变量，this代表全局对象
+  console.log("test1() x:"+x);
+  console.log("test1() this.x:"+this.x);
+}
+test1();
+console.log("this.x:"+this.x);
+
+var x2=2;
+function test2(){
+	  var x2=0;//定义一个局部变量
+	  //x2=0;//把上一行代码注释，则是修改全局变量x2
+	  console.log("-----test2()函数");
+	  console.log("test2() x2:"+x2);//这里取局部变量
+	  console.log("test2() this.x2:"+this.x2);//这里取全局变量
+	  this.x2 = 12;//修改全局变量
+	  console.log("test2() this.x2:"+this.x2);
+}
+test2();
+console.log("this.x2:"+this.x2);
+
+var x4=4;
+function test3(){
+	console.log("-----test3()函数");
+	console.log("test3():"+this.x4);
+	var x4=34;
+	var test4=function(){
+		console.log("test4():"+this.x4);
+	}
+	test4();
+}
+test3();
+
+console.log("-----在对象的方法里面调用");
+var obj={
+   x:123		
+}
+obj._method=test1;
+console.log("test1()作为对象的方法来调用");
+obj._method();
+
+console.log("-----在构造函数里面调用");
+
+var x5=5;
+function Person(){
+	console.log("Person():"+this.x5);
+	this.x5="我是person的 x";//如果是构造函数的化，x5表示对象的属性
+	console.log("Person():"+this.x5);
+}
+var obj=new Person();//Person()函数和一般函数没有区别，但是 用new来 调用该函数，就成了构造函数，实例了一个对象
+
+console.log("x5:"+x5);
+console.log("obj.x5:"+obj.x5);
+</script>
+</html>

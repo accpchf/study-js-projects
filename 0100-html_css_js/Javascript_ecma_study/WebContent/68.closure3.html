@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用闭包实现封装</title>
+</head>
+<script type="text/javascript">
+/**
+ * 实现封装注意三点:
+	 1.私有变量和私有方法不对外暴露，
+	 2.类型的公有方法可以访问私有方法和私有属性
+	 3.公有方法应该只有一份实例，也就是所有对象的公有方法都引用同一处内存地址
+ */
+var Person=(function(){
+	var _say =function(){
+		console.log("这是一个私有方法");
+	};
+	return function(name,age){
+		var _name,_age;//用_开头命名的函数内部变量，作为私有变量
+		_name=name;
+		_age=age;
+		console.log(this);
+		this.getName=function(){
+			return _name;
+		}
+		this.setName=function(name){
+			_name=name;
+		}
+		this.getAge=function(){
+			return _age;
+		}
+		this.setAge=function(age){
+			_age=age;
+		}
+		this.say=function(){
+			_say();
+			console.log("名字:" + _name + ";年龄:" + _age);
+		}
+	}
+})();//匿名函数自执行，闭包函数就变成构造函数了
+
+var p1=new Person("小明",32);
+p1.say();
+p1.setName("小明2");
+p1.setAge(30);
+p1.say();
+
+var p2=new Person("小华",30);
+console.log("p1.say ===p2.say:"+(p1.say ===p2.say));//false,说明每次调用构造函数，方法实例都不同，这和用构造函数里面定义方法没有什么区别。 
+</script>
+</html>

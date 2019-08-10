@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>借用构造函数和寄生原型式继承模式组合</title>
+</head>
+<script type="text/javascript">
+function Animal(legs){
+	console.log("调用构造函数Animal");
+	this.type="动物";
+	this.legs=legs;
+	if(typeof this.show1 !="function"){
+		Animal.prototype.show1=function(){
+			console.log("show1 种类是:"+this.type+";有"+this.legs+"条腿");
+		}
+	}
+	this.show4=function(){
+		console.log("show4 种类是:"+this.type+";有"+this.legs+"条腿");
+	}
+}
+//原型式继承模式函数
+function object(Super) {
+　　　　function Temp() {}
+　　　　Temp.prototype = Super;
+　　　　return new Temp();
+}
+
+//理解该函数
+function inheritPrototype(subType,superType){
+	var _prototype=object(superType.prototype);
+	//console.log(_prototype.constructor);
+	_prototype.constructor=subType;
+	//console.log(subType);
+	subType.prototype=_prototype;
+}
+function Cat(name,color){
+	this.name=name;
+	this.color=color;
+	Animal.call(this, 4);//借用构造函数,继承属性
+}
+inheritPrototype(Cat,Animal);//寄生原型式模式
+Cat.prototype.getName=function(){
+	return this.name;
+}
+Cat.prototype.showCat=function(){
+	this.show1();//在子类可以继承父类的实例方法
+	this.show4();//在子类可以继承父类的实例方法
+	console.log("它是一个"+this.type);//在子类可以继承父类的属性
+	console.log("名字:"+this.name+";颜色:"+this.color);
+}
+
+var cat=new Cat("波斯猫","白色");
+cat.showCat();
+console.log(cat.type+";"+cat.legs);
+</script>
+</html>
